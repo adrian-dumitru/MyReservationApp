@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "baseName": "MyReservationApp",
+    "packageName": "dumitru.adrian.myreservationapp",
+    "packageFolder": "dumitru/adrian/myreservationapp",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "7b7a123c8f922c17e9a3fa18537af6d48143e617"
+  }
+}
