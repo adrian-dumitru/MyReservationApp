@@ -31,8 +31,14 @@
             "language": "Language"
         },
         "form": {
+            "user_type.client":"Client",
+            "user_type.owner":"Owner",
             "username": "Login",
             "username.placeholder": "Your login",
+            "firstname": "First name",
+            "firstname.placeholder": "Your first name",
+            "lastname": "Last name",
+            "lastname.placeholder": "Your last name",
             "newpassword": "New password",
             "newpassword.placeholder": "New password",
             "confirmpassword": "New password confirmation",

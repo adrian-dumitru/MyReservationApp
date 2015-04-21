@@ -31,6 +31,7 @@ public class UserDTO {
     @Size(min = 2, max = 5)
     private String langKey;
 
+    @NotNull
     private List<String> roles;
 
     public UserDTO() {

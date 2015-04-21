@@ -14,6 +14,13 @@ angular.module('myreservationappApp')
                 $scope.doNotMatch = 'ERROR';
             } else {
                 $scope.registerAccount.langKey = $translate.use();
+
+                if($scope.user_type == "client")
+                    $scope.registerAccount.roles = ["ROLE_CLIENT"] ;
+                else
+                    $scope.registerAccount.roles = ["ROLE_CLIENT","ROLE_CLIENT"];
+
+
                 $scope.doNotMatch = null;
                 $scope.error = null;
                 $scope.errorUserExists = null;

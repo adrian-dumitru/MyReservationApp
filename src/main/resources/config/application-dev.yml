@@ -10,7 +10,7 @@ spring:
         databaseName: MyReservationApp
         serverName: localhost
         username: ADRIAN
-        password: PAROLA
+        password: parola
         cachePrepStmts: true
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
