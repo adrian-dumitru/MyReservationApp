@@ -58,6 +58,20 @@ public class UserService {
         return Optional.empty();
     }
 
+    public Optional<User> activateFacebookRegistration(String login) {
+        log.debug("Activating user with login {}", login);
+        userRepository.findOneByLogin(login)
+            .map(user -> {
+                // activate given user for the registration key.
+                user.setActivated(true);
+                user.setActivationKey(null);
+                userRepository.save(user);
+                log.debug("Activated user: {}", user);
+                return user;
+            });
+        return Optional.empty();
+    }
+
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
                                       String langKey,List<String> roles) {
         User newUser = new User();
@@ -95,7 +109,7 @@ public class UserService {
     }
 
     public void changePassword(String password) {
-        userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u-> {
+        userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
             String encryptedPassword = passwordEncoder.encode(password);
             u.setPassword(encryptedPassword);
             userRepository.save(u);
@@ -121,7 +135,7 @@ public class UserService {
     @Scheduled(cron = "0 0 0 * * ?")
     public void removeOldPersistentTokens() {
         LocalDate now = new LocalDate();
-        persistentTokenRepository.findByTokenDateBefore(now.minusMonths(1)).stream().forEach(token ->{
+        persistentTokenRepository.findByTokenDateBefore(now.minusMonths(1)).stream().forEach(token -> {
             log.debug("Deleting token {}", token.getSeries());
             User user = token.getUser();
             user.getPersistentTokens().remove(token);
@@ -145,4 +159,6 @@ public class UserService {
             userRepository.delete(user);
         }
     }
+
+
 }

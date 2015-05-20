@@ -42,6 +42,13 @@
                                 </span>
                     </a>
                     <ul class="dropdown-menu">
+                        <li ng-controller="LoginController">
+                            <button ng-click="facebook_login()" class="btn btn-block btn-social btn-facebook">
+
+                                <i class="fa fa-facebook"></i> Sign in with Facebook
+
+                            </button>
+                        </li>
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings"><span class="glyphicon glyphicon-wrench"></span>
                             &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password"><span class="glyphicon glyphicon-lock"></span>

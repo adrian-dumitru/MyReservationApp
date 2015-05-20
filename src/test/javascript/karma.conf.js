@@ -31,6 +31,7 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-animate/angular-animate.js',
             'main/webapp/bower_components/angular-aria/angular-aria.js',
             'main/webapp/bower_components/angular-material/angular-material.js',
+            'main/webapp/bower_components/angular-facebook/lib/angular-facebook.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

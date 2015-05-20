@@ -55,24 +55,33 @@ public class AccountResource {
             produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
     public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
-        return userRepository.findOneByLogin(userDTO.getLogin())
-            .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
-            .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
-                .map(user -> new ResponseEntity<>("e-mail address already in use", HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> {
-                    User user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
-                    userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
-                    userDTO.getLangKey(),userDTO.getRoles());
-                    String baseUrl = request.getScheme() + // "http"
-                    "://" +                                // "://"
-                    request.getServerName() +              // "myhost"
-                    ":" +                                  // ":"
-                    request.getServerPort();               // "80"
+        System.out.println("aici ajunge");
 
-                    mailService.sendActivationEmail(user, baseUrl);
-                    return new ResponseEntity<>(HttpStatus.CREATED);
-                })
-        );
+        if (!userDTO.getEmail().startsWith("facebookemail")) {
+
+            return userRepository.findOneByLogin(userDTO.getLogin())
+                .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
+                .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
+                        .map(user -> new ResponseEntity<>("e-mail address already in use", HttpStatus.BAD_REQUEST))
+                        .orElseGet(() -> {
+                            User user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
+                                userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
+                                userDTO.getLangKey(), userDTO.getRoles());
+
+                            String baseUrl = request.getScheme() + // "http"
+                                "://" +                                // "://"
+                                request.getServerName() +              // "myhost"
+                                ":" +                                  // ":"
+                                request.getServerPort();               // "80"
+                            mailService.sendActivationEmail(user, baseUrl);
+
+                            return new ResponseEntity<>(HttpStatus.CREATED);
+                        })
+                );
+        } else {
+            userService.activateFacebookRegistration(userDTO.getLogin());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
     }
     /**
      * GET  /activate -> activate the registered user.
@@ -95,6 +104,7 @@ public class AccountResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public String isAuthenticated(HttpServletRequest request) {
+        System.out.println("heeeelooooooooooooooooooooooo");
         log.debug("REST request to check if the current user is authenticated");
         return request.getRemoteUser();
     }

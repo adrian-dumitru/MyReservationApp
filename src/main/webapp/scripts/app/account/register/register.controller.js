@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myreservationappApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth,Facebook) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -18,7 +18,7 @@ angular.module('myreservationappApp')
                 if($scope.user_type == "client")
                     $scope.registerAccount.roles = ["ROLE_CLIENT"] ;
                 else
-                    $scope.registerAccount.roles = ["ROLE_CLIENT","ROLE_CLIENT"];
+                    $scope.registerAccount.roles = ["ROLE_OWNER","ROLE_CLIENT"];
 
 
                 $scope.doNotMatch = null;
