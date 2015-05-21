@@ -55,7 +55,6 @@ public class AccountResource {
             produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
     public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
-        System.out.println("aici ajunge");
 
         if (!userDTO.getEmail().startsWith("facebookemail")) {
 
@@ -79,8 +78,17 @@ public class AccountResource {
                         })
                 );
         } else {
-            userService.activateFacebookRegistration(userDTO.getLogin());
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return userRepository.findOneByLogin(userDTO.getLogin())
+                .map(user -> new ResponseEntity<>(HttpStatus.CREATED))
+                .orElseGet(() -> {
+                    userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
+                        userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
+                        userDTO.getLangKey(), userDTO.getRoles());
+
+                    userService.activateFacebookRegistration(userDTO.getLogin());
+                    return new ResponseEntity<>(HttpStatus.CREATED);
+                });
+
         }
     }
     /**
@@ -104,7 +112,6 @@ public class AccountResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public String isAuthenticated(HttpServletRequest request) {
-        System.out.println("heeeelooooooooooooooooooooooo");
         log.debug("REST request to check if the current user is authenticated");
         return request.getRemoteUser();
     }
