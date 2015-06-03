@@ -1,0 +1,57 @@
+{
+    "profile": {
+        "home": {
+            "title": "Profile"
+        },
+        "restaurant": {
+            "title": "Basic Info",
+            "name": "Name",
+            "type": "Type",
+            "description": "Description",
+            "phone": "Phone",
+            "email": "Email",
+            "create_or_edit": "Create or edit your basic info",
+            "create_button": "Create your basic info",
+            "types": {
+                "restaurant": "Restaurant",
+                "pub": "Pub",
+                "club": "Club"
+            }
+        },
+        "location":{
+            "title": "Location",
+            "city": "City",
+            "street": "Street",
+            "number": "Number",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "create_or_edit": "Save or edit your location",
+            "create_button": "Save your location"
+        },
+        "program":{
+            "title": "Program",
+            "create_or_edit": "Save or edit your program",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday",
+            "create_button": "Save your program"
+        },
+        "error_messages":{
+            "required": "This field is required.",
+            "minimum_length_2": "This field is required to be at least 2 characters.",
+            "maximum_length_30": "This field cannot be longer than 30 characters.",
+            "maximum_length_1000": "This field cannot be longer than 1000 characters.",
+            "phone": "Phone number has to have 10 digits."
+        },
+        "delete": {
+            "question": "Are you sure you want to delete Location {{ id }}?"
+        },
+        "detail": {
+            "title": "Location"
+        }
+    }
+}

@@ -6,9 +6,13 @@
             "home": "Home",
             "entities": {
                 "main": "Entities",
+                "location": "Location",
+                "program": "Program",
+                "restaurant": "Restaurant",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {
+                "profile": "Profile",
                 "main": "Account",
                 "settings": "Settings",
                 "password": "Password",

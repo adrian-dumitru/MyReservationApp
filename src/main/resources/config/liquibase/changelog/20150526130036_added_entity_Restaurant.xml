@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Restaurant.
+    -->
+    <changeSet id="20150526130038" author="adrian.dumitru">
+        <createTable tableName="T_RESTAURANT">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(1000)"/>
+            <column name="phone" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="user_id" type="bigint"/>
+            <column name="location_id" type="bigint"/>
+            <column name="program_id" type="bigint"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="T_RESTAURANT"
+                                 constraintName="fk_restaurant_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="location_id"
+                                 baseTableName="T_RESTAURANT"
+                                 constraintName="fk_restaurant_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_LOCATION"/>
+
+        <addForeignKeyConstraint baseColumnNames="program_id"
+                                 baseTableName="T_RESTAURANT"
+                                 constraintName="fk_restaurant_program_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_PROGRAM"/>
+
+    </changeSet>
+</databaseChangeLog>

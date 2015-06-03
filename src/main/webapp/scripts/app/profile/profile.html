@@ -1,0 +1,544 @@
+<div>
+
+     <!--Basic restaurant info section-->
+
+    <div>
+
+
+        <h2 translate="profile.home.title">Profile</h2>
+
+        <h3 ng-show="restaurant.id" translate="profile.restaurant.title">Basic Info</h3>
+
+        <button ng-hide="restaurant.id" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveRestaurantModal" ng-click="resetEditFormRestaurant()">
+            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.restaurant.create_button">Create your basic info</span>
+        </button>
+
+        <div class="modal fade" id="saveRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="myRestaurantLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form name="editFormRestaurant" role="form" novalidate ng-submit="createRestaurant()" show-validation>
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    ng-click="clearRestaurant()">&times;</button>
+                            <h4 class="modal-title" id="myRestaurantLabel" translate="profile.restaurant.create_or_edit">Create or edit a your basic info</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+
+                                <label translate="profile.restaurant.name">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="{{'profile.restaurant.name' | translate}}"
+                                       required ng-minlength="2" ng-maxlength="30" ng-model="restaurant.name">
+
+                                <div ng-show="editFormRestaurant.name.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.name.$error.required" translate="profile.error_messages.required">
+                                        This field is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.name.$error.minlength" translate="profile.error_messages.minimum_length_2" translate-value-min="2">
+                                        This field is required to be at least 2 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.name.$error.maxlength" translate="profile.error_messages.maximum_length_30" translate-value-max="30">
+                                        This field cannot be longer than 30 characters.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <ui-select ng-model="restaurant.type" required name="type" theme="bootstrap" style="width:300px;">
+                                    <ui-select-match placeholder="Select or search a type in the list...">{{restaurant.type}}</ui-select-match>
+                                    <ui-select-choices repeat="type in restaurant_types">
+                                        <div>{{type}}</div>
+                                    </ui-select-choices>
+                                </ui-select>
+
+                                <div ng-show="editFormRestaurant.type.$error.required">
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.type.$error.required" translate="profile.error_messages.required">
+                                        This field is required.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label translate="profile.restaurant.description">Description</label>
+                                <input type="textarea" rows="4" cols="50" class="form-control" name="description"
+                                       ng-model="restaurant.description" ng-maxlength="1000" placeholder="{{'profile.restaurant.description' | translate}}">
+
+
+                                <div ng-show="editFormRestaurant.description.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.description.$error.maxlength" translate="profile.error_messages.maximum_length_1000" translate-value-max="1000">
+                                        This field cannot be longer than 1000 characters.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+
+                                <label translate="profile.restaurant.phone">Phone</label>
+                                <input type="text" name="phone" class="form-control" placeholder="{{'profile.restaurant.phone' | translate}}"
+                                       ng-model="restaurant.phone" ng-pattern="/^([0-9]{10})$/">
+
+
+                                <div ng-show="editFormRestaurant.phone.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.phone.$error.pattern" translate="profile.error_messages.phone">
+                                        Phone number has to have 10 digits.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label translate="profile.restaurant.email">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="{{'profile.restaurant.email' | translate}}"
+                                       ng-model="restaurant.email" ng-minlength=5 ng-maxlength=100>
+
+
+                                <div ng-show="editFormRestaurant.email.$dirty && editFormRestaurant.email.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.email.$error.required" translate="global.messages.validate.email.required">
+                                        Your e-mail is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.email.$error.email" translate="global.messages.validate.email.invalid">
+                                        Your e-mail is invalid.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.email.$error.minlength" translate="global.messages.validate.email.minlength">
+                                        Your e-mail is required to be at least 5 characters
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editFormRestaurant.email.$error.maxlength" translate="global.messages.validate.email.maxlength">
+                                        Your e-mail cannot be longer than 100 characters
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearRestaurant()">
+                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                            </button>
+                            <button type="submit" ng-disabled="editFormRestaurant.$invalid" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <tr ng-show="restaurant.name">
+                    <th translate="myreservationappApp.restaurant.name">Name:</th>
+                    <th>{{restaurant.name}}</th>
+                </tr>
+                <tr ng-show="restaurant.type">
+                    <th translate="myreservationappApp.restaurant.type">Type:</th>
+                    <th>{{restaurant.type}}</th>
+                </tr>
+                <tr ng-show="restaurant.phone">
+                    <th translate="myreservationappApp.restaurant.phone">Phone:</th>
+                    <th>{{restaurant.phone}}</th>
+                </tr>
+                <tr ng-show="restaurant.email">
+                    <th translate="myreservationappApp.restaurant.email">Email:</th>
+                    <th>{{restaurant.email}}</th>
+                </tr>
+                <tr ng-show="restaurant.description">
+                    <th translate="myreservationappApp.restaurant.description">Description:</th>
+                    <th>{{restaurant.description}}</th>
+                </tr>
+            </table>
+            <button type="submit" ng-show="restaurant.name"
+                    ng-click="getRestaurant()"
+                    class="btn btn-primary" data-toggle="modal" data-target="#saveRestaurantModal">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+            </button>
+
+        </div>
+
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------------------- -->
+    <!--Location section-->
+
+    <div>
+
+        <h2 ng-hide="location.id || !restaurant.id" translate="profile.location.title">Location</h2>
+
+        <button ng-hide="location.id || !restaurant.id" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#saveLocationModal" ng-click="resetEditFormLocation()">
+            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.location.create_button">Save your location</span>
+        </button>
+        <div class="modal fade" id="saveLocationModal" tabindex="-1" role="dialog" aria-labelledby="myLocationLabel"
+             aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form name="editFormLocation" role="form" novalidate ng-submit="createLocation()">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    ng-click="clearLocation()">&times;</button>
+                            <h4 class="modal-title" id="myLocationLabel" translate="profile.location.create_or_edit">Save or edit a Location</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label translate="profile.location.city">City</label>
+                                <input type="text" class="form-control" name="city"
+                                       ng-model="location.city" required placeholder="{{'profile.location.city' | translate}}">
+
+                                <div ng-show="editFormLocation.city.$error.required">
+                                    <p class="help-block"
+                                       ng-show="editFormLocation.city.$error.required" translate="profile.error_messages.required">
+                                        This field is required.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.location.street">Street</label>
+                                <input type="text" class="form-control" name="street" required
+                                       ng-model="location.street" placeholder="{{'profile.location.street' | translate}}">
+
+                                <div ng-show="editFormLocation.street.$error.required">
+                                    <p class="help-block"
+                                       ng-show="editFormLocation.street.$error.required" translate="profile.error_messages.required">
+                                        This field is required.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.location.number">Number</label>
+                                <input type="text" class="form-control" name="number" required
+                                       ng-model="location.number" placeholder="{{'profile.location.number' | translate}}">
+
+                                <div ng-show="editFormLocation.number.$error.required">
+                                    <p class="help-block"
+                                       ng-show="editFormLocation.number.$error.required" translate="profile.error_messages.required">
+                                        This field is required.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.location.latitude">Latitude</label>
+                                <input type="text" class="form-control" name="latitude"
+                                       ng-model="location.latitude" placeholder="{{'profile.location.latitude' | translate}}">
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.location.longitude">Longitude</label>
+                                <input type="text" class="form-control" name="longitude"
+                                       ng-model="location.longitude" placeholder="{{'profile.location.longitude' | translate}}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearLocation()">
+                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                            </button>
+                            <button type="submit" ng-disabled="editFormLocation.$invalid" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr ng-show="location.city">
+                    <th translate="profile.location.city">City</th>
+                    <th>{{location.city}}</th>
+                </tr>
+                <tr ng-show="location.street">
+                    <th translate="profile.location.street">Street</th>
+                    <th>{{location.street}}</th>
+                </tr>
+                <tr ng-show="location.number">
+                    <th translate="profile.location.number">Number</th>
+                    <th>{{location.number}}</th>
+                </tr>
+            </table>
+            <button type="submit" ng-show="location.city"
+                    ng-click="getLocation()"
+                    class="btn btn-primary" data-toggle="modal" data-target="#saveLocationModal">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+        <br>
+        <div ng-show="location.latitude && location.longitude">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom">
+
+                <ui-gmap-marker coords="marker.coords" idKey="marker.id"></ui-gmap-marker>
+
+            </ui-gmap-google-map>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------------------- -->
+    <!-- Program section -->
+
+    <div>
+
+        <h2 translate="profile.program.title">Program</h2>
+
+        <button ng-show="program.id" ng-hide="program.id" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveProgramModal" ng-click="resetEditFormProgram()">
+            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.program.title">Save your program</span>
+        </button>
+        <div class="modal fade" id="saveProgramModal" tabindex="-1" role="dialog" aria-labelledby="myProgramLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form name="editFormProgram" role="form" novalidate ng-submit="createProgram()">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    ng-click="clearProgram()">&times;</button>
+                            <h4 class="modal-title" id="myProgramLabel" translate="profile.program.create_or_edit">Save or edit your program</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Start-End</th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.monday">Monday</th>
+                                        <th>
+                                            <ui-select ng-model="week.monday" name="monday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.monday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.monday.value">
+                                            <input type="time" id="mondayStart" ng-model="mondayStart" name="mondayStart"
+                                                   placeholder="HH:mm" ng-required="week.monday.value"/>
+                                            <input type="time" id="mondayEnd" ng-model="mondayEnd" name="mondayEnd"
+                                                   placeholder="HH:mm" ng-required="week.monday.value" />
+                                        </th>
+                                        <th ng-hide="week.monday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.tuesday">Tuesday</th>
+                                        <th>
+                                            <ui-select ng-model="week.tuesday" required name="tuesday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.tuesday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.tuesday.value">
+                                            <input type="time" id="tuesdayStart" ng-model="tuesdayStart" name="tuesdayStart"
+                                                   placeholder="HH:mm" ng-required="week.tuesday.value" />
+                                            <input type="time" id="tuesdayEnd" ng-model="tuesdayEnd" name="tuesdayEnd"
+                                                   placeholder="HH:mm" ng-required="week.tuesday.value" />
+                                        </th>
+                                        <th ng-hide="week.tuesday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.wednesday">Wednesday</th>
+                                        <th>
+                                            <ui-select ng-model="week.wednesday" required name="wednesday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.wednesday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.wednesday.value">
+                                            <input type="time" id="wednesdayStart" ng-model="wednesdayStart" name="wednesdayStart"
+                                                   placeholder="HH:mm" ng-required="week.wednesday.value" />
+                                            <input type="time" id="wednesdayEnd" ng-model="wednesdayEnd" name="wednesdayEnd"
+                                                   placeholder="HH:mm" ng-required="week.wednesday.value" />
+                                        </th>
+                                        <th ng-hide="week.wednesday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.thursday">Thursday</th>
+                                        <th>
+                                            <ui-select ng-model="week.thursday" required name="thursday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.thursday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.thursday.value">
+                                            <input type="time" id="thursdayStart" ng-model="thursdayStart" name="thursdayStart"
+                                                   placeholder="HH:mm" ng-required="week.thursday.value" />
+                                            <input type="time" id="thursdayEnd" ng-model="thursdayEnd" name="thursdayEnd"
+                                                   placeholder="HH:mm" ng-required="week.thursday.value" />
+                                        </th>
+                                        <th ng-hide="week.thursday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.friday">Friday</th>
+                                        <th>
+                                            <ui-select ng-model="week.friday" required name="friday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.friday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.friday.value">
+                                            <input type="time" id="fridayStart" ng-model="fridayStart" name="fridayStart"
+                                                   placeholder="HH:mm" ng-required="week.friday.value" />
+                                            <input type="time" id="fridayEnd" ng-model="fridayEnd" name="fridayEnd"
+                                                   placeholder="HH:mm" ng-required="week.friday.value" />
+                                        </th>
+                                        <th ng-hide="week.friday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.saturday">Saturday</th>
+                                        <th>
+                                            <ui-select ng-model="week.saturday" required name="saturday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.saturday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.saturday.value">
+                                            <input type="time" id="saturdayStart" ng-model="saturdayStart" name="saturdayStart"
+                                                   placeholder="HH:mm" ng-required="week.saturday.value" />
+                                            <input type="time" id="saturdayEnd" ng-model="saturdayEnd" name="saturdayEnd"
+                                                   placeholder="HH:mm" ng-required="week.saturday.value" />
+                                        </th>
+                                        <th ng-hide="week.saturday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th translate="profile.program.sunday">Sunday</th>
+                                        <th>
+                                            <ui-select ng-model="week.sunday" required name="sunday" theme="bootstrap" style="width:100px;">
+                                                <ui-select-match placeholder="Select">{{week.sunday.name}}</ui-select-match>
+                                                <ui-select-choices repeat="option in week.options">
+                                                    <div>{{option.name}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </th>
+
+                                        <th ng-show="week.sunday.value">
+                                            <input type="time" id="sundayStart" ng-model="sundayStart" name="sundayStart"
+                                                   placeholder="HH:mm" ng-required="week.sunday.value" />
+                                            <input type="time" id="sundayEnd" ng-model="sundayEnd" name="sundayEnd"
+                                                   placeholder="HH:mm" ng-required="week.sunday.value" />
+                                        </th>
+                                        <th ng-hide="week.sunday.value">
+                                            <label>CLOSED</label>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearProgram()">
+                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                            </button>
+                            <button type="submit" ng-disabled="editFormProgram.$invalid" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped" ng-show="program.mondayStart">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Start-End</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th><label translate="profile.program.monday">Monday</label></th>
+                    <th>
+                        <label>{{program.mondayStart === 'CLOSED'? 'CLOSED' : program.mondayStart + ' - ' + program.mondayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.tuesday">Tuesday</label></th>
+                    <th>
+                        <label>{{program.tuesdayStart === 'CLOSED'? 'CLOSED' : program.tuesdayStart + ' - ' + program.tuesdayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.wednesday">Wednesday</label></th>
+                    <th>
+                        <label>{{program.wednesdayStart === 'CLOSED'? 'CLOSED' : program.wednesdayStart + ' - ' + program.wednesdayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.thursday">Thursday</label></th>
+                    <th>
+                        <label>{{program.thursdayStart === 'CLOSED'? 'CLOSED' : program.thursdayStart + ' - ' + program.thursdayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.friday">Friday</label></th>
+                    <th>
+                        <label>{{program.fridayStart === 'CLOSED'? 'CLOSED' : program.fridayStart + ' - ' + program.fridayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.saturday">Saturday</label></th>
+                    <th>
+                        <label>{{program.saturdayStart === 'CLOSED'? 'CLOSED' : program.saturdayStart + ' - ' + program.saturdayEnd}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label translate="profile.program.sunday">Sunday</label></th>
+                    <th>
+                        <label>{{program.sundayStart === 'CLOSED'? 'CLOSED' : (program.sundayStart + ' - ' + program.sundayEnd)}}</label>
+                    </th>
+                </tr>
+            </table>
+            <button type="submit" ng-show="program.mondayStart"
+                    ng-click="getProgram()"
+                    class="btn btn-primary" data-toggle="modal" data-target="#saveProgramModal">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+
+    </div>
+
+</div>

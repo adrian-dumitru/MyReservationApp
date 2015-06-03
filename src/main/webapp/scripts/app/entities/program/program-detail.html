@@ -1,0 +1,134 @@
+
+<div>
+    <h2><span translate="myreservationappApp.program.detail.title">Program</span> {{program.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.mondayStart">MondayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.mondayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.mondayEnd">MondayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.mondayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.tuesdayStart">TuesdayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.tuesdayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.tuesdayEnd">TuesdayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.tuesdayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.wednesdayStart">WednesdayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.wednesdayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.wednesdayEnd">WednesdayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.wednesdayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.thursdayStart">ThursdayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.thursdayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.thursdayEnd">ThursdayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.thursdayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.fridayStart">FridayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.fridayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.fridayEnd">FridayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.fridayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.saturdayStart">SaturdayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.saturdayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.saturdayEnd">SaturdayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.saturdayEnd}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.sundayStart">SundayStart</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.sundayStart}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.program.sundayEnd">SundayEnd</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{program.sundayEnd}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="program"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

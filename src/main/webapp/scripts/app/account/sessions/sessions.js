@@ -7,7 +7,7 @@ angular.module('myreservationappApp')
                 parent: 'account',
                 url: '/sessions',
                 data: {
-                    roles: ['ROLE_USER'],
+                    roles: ['ROLE_CLIENT'],
                     pageTitle: 'global.menu.account.sessions'
                 },
                 views: {

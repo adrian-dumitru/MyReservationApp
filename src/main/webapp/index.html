@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+        <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
@@ -30,8 +31,6 @@
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container" ng-cloak="">
             <div class="well" ui-view="content"></div>
-
-
         </div>
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
@@ -66,6 +65,9 @@
         <script src="bower_components/angular-aria/angular-aria.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+        <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+        <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -125,10 +127,24 @@
         <script src="scripts/app/error/error.js"></script>
         <script src="scripts/app/main/main.js"></script>
         <script src="scripts/app/main/main.controller.js"></script>
+        <script src="scripts/app/profile/profile.js"></script>
+        <script src="scripts/app/profile/profile.controller.js"></script>
         <script src="scripts/components/auth/services/sessions.service.js"></script>
         <script src="scripts/components/auth/provider/auth.session.service.js"></script>
         <script src="scripts/app/account/sessions/sessions.js"></script>
         <script src="scripts/app/account/sessions/sessions.controller.js"></script>
+        <script src="scripts/app/entities/location/location.js"></script>
+        <script src="scripts/app/entities/location/location.controller.js"></script>
+        <script src="scripts/app/entities/location/location-detail.controller.js"></script>
+        <script src="scripts/components/entities/location/location.service.js"></script>
+        <script src="scripts/app/entities/program/program.js"></script>
+        <script src="scripts/app/entities/program/program.controller.js"></script>
+        <script src="scripts/app/entities/program/program-detail.controller.js"></script>
+        <script src="scripts/components/entities/program/program.service.js"></script>
+        <script src="scripts/app/entities/restaurant/restaurant.js"></script>
+        <script src="scripts/app/entities/restaurant/restaurant.controller.js"></script>
+        <script src="scripts/app/entities/restaurant/restaurant-detail.controller.js"></script>
+        <script src="scripts/components/entities/restaurant/restaurant.service.js"></script>
         <!-- endbuild -->
 </body>
 </html>

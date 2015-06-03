@@ -1,0 +1,32 @@
+{
+    "myreservationappApp": {
+        "program" : {
+            "home": {
+                "title": "Programs",
+                "createLabel": "Create a new Program",
+                "createOrEditLabel": "Create or edit a Program"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Program {{ id }}?"
+            },
+            "detail": {
+                "title": "Program"
+            },
+            "mondayStart": "MondayStart",
+            "mondayEnd": "MondayEnd",
+            "tuesdayStart": "TuesdayStart",
+            "tuesdayEnd": "TuesdayEnd",
+            "wednesdayStart": "WednesdayStart",
+            "wednesdayEnd": "WednesdayEnd",
+            "thursdayStart": "ThursdayStart",
+            "thursdayEnd": "ThursdayEnd",
+            "fridayStart": "FridayStart",
+            "fridayEnd": "FridayEnd",
+            "saturdayStart": "SaturdayStart",
+            "saturdayEnd": "SaturdayEnd",
+            "sundayStart": "SundayStart",
+            "sundayEnd": "SundayEnd",
+            "restaurant": "restaurant"
+        }
+    }
+}
