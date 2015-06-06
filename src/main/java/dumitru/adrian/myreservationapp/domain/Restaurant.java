@@ -48,6 +48,9 @@ public class Restaurant implements Serializable {
     @OneToOne
     private Program program;
 
+    @OneToOne
+    private Restaurant_tables restaurant_tables;
+
     public Long getId() {
         return id;
     }
@@ -118,6 +121,14 @@ public class Restaurant implements Serializable {
 
     public void setProgram(Program program) {
         this.program = program;
+    }
+
+    public Restaurant_tables getRestaurant_tables() {
+        return restaurant_tables;
+    }
+
+    public void setRestaurant_tables(Restaurant_tables restaurant_tables) {
+        this.restaurant_tables = restaurant_tables;
     }
 
     @Override

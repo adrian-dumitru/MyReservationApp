@@ -9,6 +9,7 @@
                 "location": "Location",
                 "program": "Program",
                 "restaurant": "Restaurant",
+                "restaurant_tables": "Restaurant_tables",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

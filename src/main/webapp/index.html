@@ -19,8 +19,10 @@
         <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
         <!-- endbower -->
         <!-- endbuild -->
-        <!-- build:css assets/styles/main.css -->
+         <!--build:css assets/styles/main.css -->
+
         <link rel="stylesheet" href="assets/styles/main.css">
+
         <!-- endbuild -->
     </head>
     <body ng-app="myreservationappApp">
@@ -45,6 +47,7 @@
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+
         <script src="bower_components/modernizr/modernizr.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -71,6 +74,8 @@
         <!-- endbower -->
         <!-- endbuild -->
 
+        <!-- google-maps -->
+        <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
         <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
         <script src="scripts/app/app.js"></script>
@@ -91,12 +96,23 @@
         <script src="scripts/components/admin/logs.service.js"></script>
         <script src="scripts/components/admin/configuration.service.js"></script>
         <script src="scripts/components/admin/monitoring.service.js"></script>
-        <script src="scripts/components/navbar/navbar.directive.js"></script>
-        <script src="scripts/components/navbar/navbar.controller.js"></script>
+
         <script src="scripts/components/user/user.service.js"></script>
         <script src="scripts/components/util/truncate.filter.js"></script>
         <script src="scripts/components/util/base64.service.js"></script>
         <script src="scripts/components/util/parse-links.service.js"></script>
+        <script src="scripts/components/auth/services/sessions.service.js"></script>
+        <script src="scripts/components/auth/provider/auth.session.service.js"></script>
+
+        <script src="scripts/components/navbar/navbar.directive.js"></script>
+        <script src="scripts/components/navbar/navbar.controller.js"></script>
+
+        <script src="scripts/components/entities/restaurant/restaurant.service.js"></script>
+        <script src="scripts/components/entities/restaurant/restaurantMore.service.js"></script>
+        <script src="scripts/components/entities/location/location.service.js"></script>
+        <script src="scripts/components/entities/program/program.service.js"></script>
+        <script src="scripts/components/entities/restaurant_tables/restaurant_tables.service.js"></script>
+
         <script src="scripts/app/account/account.js"></script>
         <script src="scripts/app/account/activate/activate.js"></script>
         <script src="scripts/app/account/activate/activate.controller.js"></script>
@@ -123,28 +139,20 @@
         <script src="scripts/app/admin/logs/logs.controller.js"></script>
         <script src="scripts/app/admin/metrics/metrics.js"></script>
         <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
-        <script src="scripts/app/entities/entity.js"></script>
         <script src="scripts/app/error/error.js"></script>
-        <script src="scripts/app/main/main.js"></script>
-        <script src="scripts/app/main/main.controller.js"></script>
-        <script src="scripts/app/profile/profile.js"></script>
-        <script src="scripts/app/profile/profile.controller.js"></script>
-        <script src="scripts/components/auth/services/sessions.service.js"></script>
-        <script src="scripts/components/auth/provider/auth.session.service.js"></script>
         <script src="scripts/app/account/sessions/sessions.js"></script>
         <script src="scripts/app/account/sessions/sessions.controller.js"></script>
-        <script src="scripts/app/entities/location/location.js"></script>
-        <script src="scripts/app/entities/location/location.controller.js"></script>
-        <script src="scripts/app/entities/location/location-detail.controller.js"></script>
-        <script src="scripts/components/entities/location/location.service.js"></script>
-        <script src="scripts/app/entities/program/program.js"></script>
-        <script src="scripts/app/entities/program/program.controller.js"></script>
-        <script src="scripts/app/entities/program/program-detail.controller.js"></script>
-        <script src="scripts/components/entities/program/program.service.js"></script>
-        <script src="scripts/app/entities/restaurant/restaurant.js"></script>
-        <script src="scripts/app/entities/restaurant/restaurant.controller.js"></script>
-        <script src="scripts/app/entities/restaurant/restaurant-detail.controller.js"></script>
-        <script src="scripts/components/entities/restaurant/restaurant.service.js"></script>
+
+
+        <script src="scripts/app/main/main.js"></script>
+        <script src="scripts/app/main/main.controller.js"></script>
+
+        <script src="scripts/app/profile/profile.js"></script>
+        <script src="scripts/app/profile/profile.controller.js"></script>
+
+        <script src="scripts/app/restaurant/restaurant.js"></script>
+        <script src="scripts/app/restaurant/restaurant.controller.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

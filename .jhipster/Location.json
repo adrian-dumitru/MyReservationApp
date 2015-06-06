@@ -1,0 +1,71 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "restaurant",
+            "relationshipNameCapitalized": "Restaurant",
+            "relationshipFieldName": "restaurant",
+            "otherEntityName": "restaurant",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Restaurant",
+            "ownerSide": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "city",
+            "fieldType": "String",
+            "fieldNameCapitalized": "City",
+            "fieldNameUnderscored": "city",
+            "fieldInJavaBeanMethod": "City",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "street",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Street",
+            "fieldNameUnderscored": "street",
+            "fieldInJavaBeanMethod": "Street",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "number",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Number",
+            "fieldNameUnderscored": "number",
+            "fieldInJavaBeanMethod": "Number",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "latitude",
+            "fieldType": "Double",
+            "fieldNameCapitalized": "Latitude",
+            "fieldNameUnderscored": "latitude",
+            "fieldInJavaBeanMethod": "Latitude",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "longitude",
+            "fieldType": "Double",
+            "fieldNameCapitalized": "Longitude",
+            "fieldNameUnderscored": "longitude",
+            "fieldInJavaBeanMethod": "Longitude",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150526123747",
+    "pagination": "no",
+    "validation": false
+}

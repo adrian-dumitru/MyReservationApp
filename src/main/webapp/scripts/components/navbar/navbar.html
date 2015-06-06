@@ -1,14 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/"><span translate="global.title">jhipster</span> <span class="navbar-version">v{{VERSION}}</span></a>
-        </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav nav-pills navbar-right">
                 <li ui-sref-active="active">
@@ -21,27 +12,6 @@
                 <li ui-sref-active="active" ng-switch-when="true" has-role="ROLE_OWNER"><a ui-sref="profile"><span class="glyphicon glyphicon-glass"></span>
                     &#xA0;<span translate="global.menu.account.profile">Profile</span></a></li>
 
-
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <span class="glyphicon glyphicon-th-list"></span>
-                                    <span class="hidden-tablet" translate="global.menu.entities.main">
-                                        Entities
-                                    </span>
-                                    <b class="caret"></b>
-                                </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ><a ui-sref="location"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.location">location</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="program"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.program">program</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="restaurant"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.restaurant">restaurant</span></a></li>
-                        <!-- JHipster will add entities to the menu here -->
-                    </ul>
-                </li>
                 <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>
@@ -55,12 +25,9 @@
                     <ul class="dropdown-menu">
                         <li ng-controller="LoginController">
                             <button ng-click="facebook_login()" class="btn btn-block btn-social btn-facebook">
-
                                 <i class="fa fa-facebook"></i> Sign in with Facebook
-
                             </button>
                         </li>
-
 
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings"><span class="glyphicon glyphicon-wrench"></span>
                             &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>

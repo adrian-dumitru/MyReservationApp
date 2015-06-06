@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import dumitru.adrian.myreservationapp.domain.Restaurant;
 import dumitru.adrian.myreservationapp.repository.RestaurantRepository;
 import dumitru.adrian.myreservationapp.web.rest.dto.GeneralDTO;
+import dumitru.adrian.myreservationapp.web.rest.dto.RestaurantDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,4 +98,35 @@ public class RestaurantResource {
         log.debug("REST request to delete Restaurant : {}", id);
         restaurantRepository.delete(id);
     }
+
+//    More functions for restaurants
+
+
+    @RequestMapping(value = "/restaurants/restaurants",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ArrayList<RestaurantDTO> getAllRestaurants() {
+        log.debug("REST request to get all Restaurants");
+        return RestaurantDTO.toRestaurantDTO(restaurantRepository.findAllByType("restaurant"));
+    }
+
+    @RequestMapping(value = "/restaurants/pubs",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ArrayList<RestaurantDTO> getAllPubs() {
+        log.debug("REST request to get all Restaurants");
+        return RestaurantDTO.toRestaurantDTO(restaurantRepository.findAllByType("pub"));
+    }
+
+    @RequestMapping(value = "/restaurants/clubs",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ArrayList<RestaurantDTO> getAllClubs() {
+        log.debug("REST request to get all Restaurants");
+        return RestaurantDTO.toRestaurantDTO(restaurantRepository.findAllByType("club"));
+    }
+
 }

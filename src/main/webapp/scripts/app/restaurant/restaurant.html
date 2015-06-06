@@ -1,0 +1,117 @@
+<div ng-cloak>
+    <div>
+
+        <h3 ng-show="restaurant.id" translate="profile.restaurant.title">Basic Info</h3>
+
+        <table class="table table-striped">
+            <tr ng-show="restaurant.name">
+                <th translate="profile.restaurant.name">Name:</th>
+                <th>{{restaurant.name}}</th>
+            </tr>
+            <tr ng-show="restaurant.type">
+                <th translate="profile.restaurant.type">Type:</th>
+                <th>{{restaurant.type}}</th>
+            </tr>
+            <tr ng-show="restaurant.phone">
+                <th translate="profile.restaurant.phone">Phone:</th>
+                <th>{{restaurant.phone}}</th>
+            </tr>
+            <tr ng-show="restaurant.email">
+                <th translate="profile.restaurant.email">Email:</th>
+                <th>{{restaurant.email}}</th>
+            </tr>
+            <tr ng-show="restaurant.description">
+                <th translate="profile.restaurant.description">Description:</th>
+                <th>{{restaurant.description}}</th>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div class="table-responsive">
+        <h3 ng-show="location.id" translate="profile.location.title">Location</h3>
+
+        <table class="table table-striped">
+            <tr ng-show="location.city">
+                <th translate="profile.location.city">City</th>
+                <th>{{location.city}}</th>
+            </tr>
+            <tr ng-show="location.street">
+                <th translate="profile.location.street">Street</th>
+                <th>{{location.street}}</th>
+            </tr>
+            <tr ng-show="location.number">
+                <th translate="profile.location.number">Number</th>
+                <th>{{location.number}}</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <div>
+        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+            <ui-gmap-marker coords="marker.coords" idKey="marker.id"></ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
+
+
+    <div class="table-responsive" ng-show="program.mondayStart">
+        <h3 translate="profile.program.title">Program</h3>
+
+        <table class="table table-striped" >
+            <thead>
+            <tr>
+                <th>Day</th>
+                <th>Start-End</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th><label translate="profile.program.monday">Monday</label></th>
+                <th>
+                    <label>{{program.mondayStart === 'CLOSED'? 'CLOSED' : program.mondayStart + ' - ' + program.mondayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.tuesday">Tuesday</label></th>
+                <th>
+                    <label>{{program.tuesdayStart === 'CLOSED'? 'CLOSED' : program.tuesdayStart + ' - ' + program.tuesdayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.wednesday">Wednesday</label></th>
+                <th>
+                    <label>{{program.wednesdayStart === 'CLOSED'? 'CLOSED' : program.wednesdayStart + ' - ' + program.wednesdayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.thursday">Thursday</label></th>
+                <th>
+                    <label>{{program.thursdayStart === 'CLOSED'? 'CLOSED' : program.thursdayStart + ' - ' + program.thursdayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.friday">Friday</label></th>
+                <th>
+                    <label>{{program.fridayStart === 'CLOSED'? 'CLOSED' : program.fridayStart + ' - ' + program.fridayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.saturday">Saturday</label></th>
+                <th>
+                    <label>{{program.saturdayStart === 'CLOSED'? 'CLOSED' : program.saturdayStart + ' - ' + program.saturdayEnd}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th><label translate="profile.program.sunday">Sunday</label></th>
+                <th>
+                    <label>{{program.sundayStart === 'CLOSED'? 'CLOSED' : (program.sundayStart + ' - ' + program.sundayEnd)}}</label>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

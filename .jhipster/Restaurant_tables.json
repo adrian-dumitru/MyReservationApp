@@ -1,0 +1,53 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "restaurant",
+            "relationshipNameCapitalized": "Restaurant",
+            "relationshipFieldName": "restaurant",
+            "otherEntityName": "restaurant",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Restaurant",
+            "ownerSide": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "two_persons_table",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Two_persons_table",
+            "fieldNameUnderscored": "two_persons_table",
+            "fieldInJavaBeanMethod": "Two_persons_table",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "four_persons_table",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Four_persons_table",
+            "fieldNameUnderscored": "four_persons_table",
+            "fieldInJavaBeanMethod": "Four_persons_table",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "six_persons_table",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Six_persons_table",
+            "fieldNameUnderscored": "six_persons_table",
+            "fieldInJavaBeanMethod": "Six_persons_table",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150606111741",
+    "pagination": "no",
+    "validation": false
+}

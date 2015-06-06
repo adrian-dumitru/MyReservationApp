@@ -30,7 +30,6 @@
         },
         "program":{
             "title": "Program",
-            "create_or_edit": "Save or edit your program",
             "monday": "Monday",
             "tuesday": "Tuesday",
             "wednesday": "Wednesday",
@@ -38,7 +37,16 @@
             "friday": "Friday",
             "saturday": "Saturday",
             "sunday": "Sunday",
+            "create_or_edit": "Save or edit your program",
             "create_button": "Save your program"
+        },
+        "restaurant_tables":{
+            "title": "Number of tables",
+            "two_persons_table": "Tables for 2 persons",
+            "four_persons_table": "Tables for 4 persons",
+            "six_persons_table": "Tables for 6 persons",
+            "create_or_edit": "Save or edit your tables",
+            "create_button": "Save your tables"
         },
         "error_messages":{
             "required": "This field is required.",

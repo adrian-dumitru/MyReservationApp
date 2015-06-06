@@ -1,4 +1,4 @@
-<div>
+<div ng-cloak>
 
      <!--Basic restaurant info section-->
 
@@ -140,23 +140,23 @@
         <div>
             <table class="table table-striped">
                 <tr ng-show="restaurant.name">
-                    <th translate="myreservationappApp.restaurant.name">Name:</th>
+                    <th translate="profile.restaurant.name">Name:</th>
                     <th>{{restaurant.name}}</th>
                 </tr>
                 <tr ng-show="restaurant.type">
-                    <th translate="myreservationappApp.restaurant.type">Type:</th>
+                    <th translate="profile.restaurant.type">Type:</th>
                     <th>{{restaurant.type}}</th>
                 </tr>
                 <tr ng-show="restaurant.phone">
-                    <th translate="myreservationappApp.restaurant.phone">Phone:</th>
+                    <th translate="profile.restaurant.phone">Phone:</th>
                     <th>{{restaurant.phone}}</th>
                 </tr>
                 <tr ng-show="restaurant.email">
-                    <th translate="myreservationappApp.restaurant.email">Email:</th>
+                    <th translate="profile.restaurant.email">Email:</th>
                     <th>{{restaurant.email}}</th>
                 </tr>
                 <tr ng-show="restaurant.description">
-                    <th translate="myreservationappApp.restaurant.description">Description:</th>
+                    <th translate="profile.restaurant.description">Description:</th>
                     <th>{{restaurant.description}}</th>
                 </tr>
             </table>
@@ -176,9 +176,9 @@
 
     <div>
 
-        <h2 ng-hide="location.id || !restaurant.id" translate="profile.location.title">Location</h2>
+        <h3 translate="profile.location.title">Location</h3>
 
-        <button ng-hide="location.id || !restaurant.id" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#saveLocationModal" ng-click="resetEditFormLocation()">
+        <button ng-hide="location.city" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#saveLocationModal" ng-click="resetEditFormLocation()">
             <span class="glyphicon glyphicon-flash"></span> <span translate="profile.location.create_button">Save your location</span>
         </button>
         <div class="modal fade" id="saveLocationModal" tabindex="-1" role="dialog" aria-labelledby="myLocationLabel"
@@ -275,26 +275,24 @@
                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
             </button>
         </div>
-        <br>
-        <div ng-show="location.latitude && location.longitude">
+
+        <div>
             <ui-gmap-google-map center="map.center" zoom="map.zoom">
-
                 <ui-gmap-marker coords="marker.coords" idKey="marker.id"></ui-gmap-marker>
-
             </ui-gmap-google-map>
         </div>
 
     </div>
 
-    <!-- ------------------------------------------------------------------------------------------------------------------- -->
-    <!-- Program section -->
+     <!----------------------------------------------------------------------------------------------------------------------->
+     <!--Program section-->
 
     <div>
 
-        <h2 translate="profile.program.title">Program</h2>
+        <h3 translate="profile.program.title">Program</h3>
 
         <button ng-show="program.id" ng-hide="program.id" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveProgramModal" ng-click="resetEditFormProgram()">
-            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.program.title">Save your program</span>
+            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.program.create_button">Save your program</span>
         </button>
         <div class="modal fade" id="saveProgramModal" tabindex="-1" role="dialog" aria-labelledby="myProgramLabel"
              aria-hidden="true">
@@ -540,5 +538,88 @@
         </div>
 
     </div>
+
+    <!----------------------------------------------------------------------------------------------------------------------->
+    <!-- Restaurant tables section -->
+
+    <div>
+
+        <h2 translate="profile.restaurant_tables.title">Restaurant_tables</h2>
+
+        <button ng-hide="restaurant_tables.id" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveRestaurant_tablesModal" ng-click="clearRestaurant_tables()">
+            <span class="glyphicon glyphicon-flash"></span> <span translate="profile.restaurant_tables.create_button">Save your tables</span>
+        </button>
+        <div class="modal fade" id="saveRestaurant_tablesModal" tabindex="-1" role="dialog" aria-labelledby="myRestaurant_tablesLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form name="editForm" role="form" novalidate ng-submit="createRestaurant_tables()">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    ng-click="createRestaurant_tables()">&times;</button>
+                            <h4 class="modal-title" id="myRestaurant_tablesLabel" translate="profile.restaurant_tables.create_or_edit">Save or edit your tables</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label translate="profile.restaurant_tables.two_persons_table">Tables for 2 persons</label>
+                                <input type="number" class="form-control" name="two_persons_table" placeholder="{{'profile.restaurant_tables.two_persons_table' | translate}}"
+                                       ng-model="restaurant_tables.two_persons_table">
+
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.restaurant_tables.four_persons_table">Tables for 4 persons</label>
+                                <input type="number" class="form-control" name="four_persons_table" placeholder="{{'profile.restaurant_tables.four_persons_table' | translate}}"
+                                       ng-model="restaurant_tables.four_persons_table">
+
+                            </div>
+                            <div class="form-group">
+                                <label translate="profile.restaurant_tables.six_persons_table">Tables for 6 persons</label>
+                                <input type="number" class="form-control" name="six_persons_table" placeholder="{{'profile.restaurant_tables.six_persons_table' | translate}}"
+                                       ng-model="restaurant_tables.six_persons_table">
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearRestaurant_tables()">
+                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                            </button>
+                            <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr ng-show="restaurant_tables.two_persons_table">
+                    <th translate="profile.restaurant_tables.two_persons_table">Tables for 2 persons</th>
+                    <th>{{restaurant_tables.two_persons_table}}</th>
+                </tr>
+                <tr ng-show="restaurant_tables.four_persons_table">
+                    <th translate="profile.restaurant_tables.four_persons_table">Tables for 4 persons</th>
+                    <th>{{restaurant_tables.four_persons_table}}</th>
+                </tr>
+                <tr ng-show="restaurant_tables.six_persons_table">
+                    <th translate="profile.restaurant_tables.six_persons_table">Tables for 6 persons</th>
+                    <th>{{restaurant_tables.six_persons_table}}</th>
+                </tr>
+            </table>
+        </div>
+
+        <button type="submit" ng-show="restaurant_tables.id"
+                ng-click="getRestaurant_tables()"
+                class="btn btn-primary" data-toggle="modal" data-target="#saveRestaurant_tablesModal">
+            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+        </button>
+
+    </div>
+
+
 
 </div>

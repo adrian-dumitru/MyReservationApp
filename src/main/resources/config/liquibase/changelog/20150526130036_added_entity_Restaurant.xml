@@ -10,7 +10,7 @@
     <!--
         Added the entity Restaurant.
     -->
-    <changeSet id="20150526130038" author="adrian.dumitru">
+    <changeSet id="20150526130036" author="adrian.dumitru">
         <createTable tableName="T_RESTAURANT">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -27,6 +27,7 @@
             <column name="user_id" type="bigint"/>
             <column name="location_id" type="bigint"/>
             <column name="program_id" type="bigint"/>
+            <column name="restaurant_tables_id" type="bigint"/>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
@@ -46,6 +47,12 @@
                                  constraintName="fk_restaurant_program_id"
                                  referencedColumnNames="id"
                                  referencedTableName="T_PROGRAM"/>
+
+        <addForeignKeyConstraint baseColumnNames="restaurant_tables_id"
+                                 baseTableName="T_RESTAURANT"
+                                 constraintName="fk_restaurant_restaurant_tables_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_RESTAURANT_TABLES"/>
 
     </changeSet>
 </databaseChangeLog>

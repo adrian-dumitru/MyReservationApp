@@ -1,0 +1,21 @@
+{
+    "myreservationappApp": {
+        "restaurant_tables" : {
+            "home": {
+                "title": "Restaurant_tabless",
+                "createLabel": "Create a new Restaurant_tables",
+                "createOrEditLabel": "Create or edit a Restaurant_tables"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Restaurant_tables {{ id }}?"
+            },
+            "detail": {
+                "title": "Restaurant_tables"
+            },
+            "two_persons_table": "Two_persons_table",
+            "four_persons_table": "Four_persons_table",
+            "six_persons_table": "Six_persons_table",
+            "restaurant": "restaurant"
+        }
+    }
+}

@@ -1,25 +1,9 @@
 {
-    "myreservationappApp": {
-        "restaurant" : {
-            "home": {
-                "title": "Restaurants",
-                "createLabel": "Create a new Restaurant",
-                "createOrEditLabel": "Create or edit a Restaurant"
-            },
-            "delete": {
-                "question": "Are you sure you want to delete Restaurant {{ id }}?"
-            },
-            "detail": {
-                "title": "Restaurant"
-            },
-            "name": "Name",
-            "type": "Type",
-            "description": "Description",
-            "phone": "Phone",
-            "email": "Email",
-            "user": "user",
-            "location": "location",
-            "program": "program"
+    "restaurant" : {
+        "home": {
+            "title": "Restaurant"
         }
+
     }
+
 }

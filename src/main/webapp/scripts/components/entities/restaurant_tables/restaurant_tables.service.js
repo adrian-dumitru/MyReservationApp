@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myreservationappApp')
-    .factory('Program', function ($resource) {
-        return $resource('api/programs/:id', {}, {
+    .factory('Restaurant_tables', function ($resource) {
+        return $resource('api/restaurant_tabless/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

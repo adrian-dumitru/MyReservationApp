@@ -4,12 +4,14 @@
 'use strict';
 
 angular.module('myreservationappApp')
-    .controller('ProfileController', function ($scope, Principal,Restaurant, User, Location, Program,$filter) {
+    .controller('ProfileController', function ($scope, Principal,Restaurant, User, Location, Program,$filter,Restaurant_tables) {
 
         $scope.restaurant = {};
         $scope.location = {};
         $scope.program = {};
+        $scope.restaurant_tables = {};
         $scope.restaurant_types = ['restaurant','pub','club'] ;
+        $scope.map = {};
         $scope.week = {};
 
 
@@ -70,6 +72,8 @@ angular.module('myreservationappApp')
                 }
                 if($scope.restaurant.program != null)
                     $scope.program = $scope.restaurant.program;
+                if($scope.restaurant.restaurant_tables != null)
+                    $scope.restaurant_tables = $scope.restaurant.restaurant_tables;
 
             });
         };
@@ -107,24 +111,29 @@ angular.module('myreservationappApp')
         };
 
         $scope.setMap = function(){
+                if(($scope.location.latitude != null) && ($scope.location.longitude != null)){
 
-            if($scope.location.latitude != null && $scope.location.longitude != null){
-                $scope.map = {
-                    center: {
-                        latitude: $scope.location.latitude,
-                        longitude: $scope.location.longitude
-                    },
-                    zoom: 12
-                };
+                    $scope.$on('mapInitialized', function(event, map) {
+                    });
 
-                $scope.marker = {
-                    id : 1,
-                    coords:{
-                        latitude: $scope.location.latitude,
-                        longitude: $scope.location.longitude
-                    }
-                };
-            }
+                    $scope.map = {
+                        center: {
+                            latitude: $scope.location.latitude,
+                            longitude: $scope.location.longitude
+                        },
+                        zoom: 8
+                    };
+
+                    $scope.marker = {
+                        id : 1,
+                        coords:{
+                            latitude: $scope.location.latitude,
+                            longitude: $scope.location.longitude
+                        }
+                    };
+
+                    console.log($scope.map.center.latitude + '          ' + $scope.map.center.longitude);
+                }
         };
 
         $scope.getLocation = function(){
@@ -283,6 +292,7 @@ angular.module('myreservationappApp')
         $scope.resetEditFormProgram = function (){
             $scope.editFormProgram.$setPristine();
             $scope.editFormProgram.$setUntouched();
+            $scope.setWeek();
         };
 
 
@@ -299,5 +309,57 @@ angular.module('myreservationappApp')
             if($scope.restaurant.program != null)
                 $scope.getProgram();
         };
+
+// --------------------------------------------------------------------------------------------------------------
+
+        // Restaurant tables functions
+
+        $scope.createRestaurant_tables = function(){
+
+            if($scope.program.id == null) {
+                Restaurant_tables.save($scope.restaurant_tables,
+                    function (data) {
+                        $scope.restaurant_tables.id = data.id;
+                        $scope.restaurant.restaurant_tables = $scope.restaurant_tables;
+                        $scope.updateRestaurant(true);
+                        $('#saveRestaurant_tablesModal').modal('hide');
+                        $scope.clearRestaurant_tables();
+                    }
+                );
+            }else{
+                $scope.updateRestaurant_tables(false);
+            }
+        };
+
+        $scope.getRestaurant_tables = function(){
+            Program.get({id: $scope.restaurant.restaurant_tables.id}, function(result) {
+                $scope.restaurant_tables = result;
+            });
+        };
+
+        $scope.updateRestaurant_tables = function(comment){
+            Restaurant_tables.update($scope.restaurant_tables,
+                function(){
+                    if(comment == false)
+                        $('#saveRestaurant_tablesModal').modal('hide');
+                }
+            );
+        };
+
+        $scope.resetEditFormRestaurant_tables = function (){
+
+            $scope.editFormRestaurant_tables.$setPristine();
+            $scope.editFormRestaurant_tables.$setUntouched();
+        };
+
+
+        $scope.clearRestaurant_tables = function () {
+            $scope.restaurant_tables = {two_persons_table: null, four_persons_table: null, six_persons_table: null};
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
+            if($scope.restaurant.restaurant_tables != null)
+                $scope.getRestaurant_tables();
+        };
+
 
     });

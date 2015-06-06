@@ -1,0 +1,115 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "User",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "location",
+            "relationshipNameCapitalized": "Location",
+            "relationshipFieldName": "location",
+            "otherEntityName": "location",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Location",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "program",
+            "relationshipNameCapitalized": "Program",
+            "relationshipFieldName": "program",
+            "otherEntityName": "program",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Program",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "restaurant_tables",
+            "relationshipNameCapitalized": "Restaurant_tables",
+            "relationshipFieldName": "restaurant_tables",
+            "otherEntityName": "restaurant_tables",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Restaurant_tables",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "30"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Type",
+            "fieldNameUnderscored": "type",
+            "fieldInJavaBeanMethod": "Type",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "1000"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Phone",
+            "fieldNameUnderscored": "phone",
+            "fieldInJavaBeanMethod": "Phone",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Email",
+            "fieldNameUnderscored": "email",
+            "fieldInJavaBeanMethod": "Email",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150526130036",
+    "pagination": "no",
+    "validation": true
+}
