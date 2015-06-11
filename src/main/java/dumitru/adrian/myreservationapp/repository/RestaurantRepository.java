@@ -15,7 +15,7 @@ import java.util.List;
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long> {
 
     Restaurant findOneByUserId(Long owner_id);
-    List<Restaurant> findAllByType(String restaurant_type);
 
+    List<Restaurant> findAllByType(String restaurant_type);
 
 }

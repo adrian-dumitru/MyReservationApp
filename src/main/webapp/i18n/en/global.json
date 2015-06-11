@@ -10,6 +10,8 @@
                 "program": "Program",
                 "restaurant": "Restaurant",
                 "restaurant_tables": "Restaurant_tables",
+                "reservation": "Reservations",
+                "reservation": "Reservation",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

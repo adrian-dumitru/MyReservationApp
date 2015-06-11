@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span translate="myreservationappApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.day">Day</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.day}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.start_hour">Start_hour</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.start_hour}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.end_hour">End_hour</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.end_hour}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.tables">Tables</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.tables}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.persons">Persons</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.persons}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.comment">Comment</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.comment}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="myreservationappApp.reservation.User">User</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{reservation.User.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="reservation"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -106,10 +106,11 @@ public class RestaurantResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ArrayList<RestaurantDTO> getAllRestaurants() {
+    public ArrayList<RestaurantDTO> getAllRestaurantsByType() {
         log.debug("REST request to get all Restaurants");
         return RestaurantDTO.toRestaurantDTO(restaurantRepository.findAllByType("restaurant"));
     }
+
 
     @RequestMapping(value = "/restaurants/pubs",
         method = RequestMethod.GET,

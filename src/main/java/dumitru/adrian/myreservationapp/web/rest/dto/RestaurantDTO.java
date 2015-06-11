@@ -76,4 +76,15 @@ public class RestaurantDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "RestaurantDTO{" +
+            "name='" + name + '\'' +
+            ", phone='" + phone + '\'' +
+            ", email='" + email + '\'' +
+            ", city='" + city + '\'' +
+            ", user_id=" + user_id +
+            '}';
+    }
 }

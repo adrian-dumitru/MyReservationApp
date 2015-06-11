@@ -1,0 +1,25 @@
+{
+    "myreservationappApp": {
+        "reservation" : {
+            "home": {
+                "title": "Reservations",
+                "createLabel": "Create a new Reservation",
+                "createOrEditLabel": "Create or edit a Reservation"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Reservation {{ id }}?"
+            },
+            "detail": {
+                "title": "Reservation"
+            },
+            "day": "Day",
+            "start_hour": "Start_hour",
+            "end_hour": "End_hour",
+            "tables": "Tables",
+            "comment": "Comment",
+            "persons": "Persons",
+            "restaurant": "restaurant",
+            "user": "user"
+        }
+    }
+}

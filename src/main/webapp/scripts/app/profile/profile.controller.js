@@ -132,7 +132,6 @@ angular.module('myreservationappApp')
                         }
                     };
 
-                    console.log($scope.map.center.latitude + '          ' + $scope.map.center.longitude);
                 }
         };
 

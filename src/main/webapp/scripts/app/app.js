@@ -23,7 +23,7 @@ angular.module('myreservationappApp', ['LocalStorageModule', 'tmh.dynamicLocale'
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
             var titleKey = 'global.title';
 
-            $rootScope.previousStateName = fromState.name;ss
+            $rootScope.previousStateName = fromState.name;
             $rootScope.previousStateParams = fromParams;
 
             // Set the page title key to the one configured in state or use default one
