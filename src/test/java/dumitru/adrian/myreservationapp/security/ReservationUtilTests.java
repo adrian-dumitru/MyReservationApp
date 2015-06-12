@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Adrian.D on 6/11/2015.
  */
-public class ScheduleTablesTest {
+public class ReservationUtilTests {
 
     @Test
     public void scheduleTablesTest(){

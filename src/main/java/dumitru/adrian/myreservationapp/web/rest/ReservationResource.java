@@ -41,8 +41,13 @@ public class ReservationResource {
         if (reservation.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new reservation cannot already have an ID").build();
         }
-        reservationRepository.save(reservation);
-        return ResponseEntity.created(new URI("/api/reservations/" + reservation.getId())).build();
+
+        if(reservation.getPersons() > 6)
+            return ResponseEntity.badRequest().build();
+        else {
+            reservationRepository.save(reservation);
+            return ResponseEntity.created(new URI("/api/reservations/" + reservation.getId())).build();
+        }
     }
 
     /**
@@ -95,7 +100,6 @@ public class ReservationResource {
     @Timed
     public List<Reservation> getAllForCurrentUser(@PathVariable Long id) {
         log.debug("REST request to get Reservation : {}", id);
-        System.out.println("------------------------------------------      " + id);
         return reservationRepository.findAllByUserId(id);
     }
 

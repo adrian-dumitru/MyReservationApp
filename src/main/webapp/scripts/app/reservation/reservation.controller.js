@@ -42,11 +42,15 @@ angular.module('myreservationappApp')
                 $scope.reservation.user = $scope.account;
 
             Reservation.update($scope.reservation,
-                function () {
+                function(data){
                     $scope.loadAll();
                     $('#saveReservationModal').modal('hide');
                     $scope.clear();
-                });
+                },function(err){
+                    console.log(err);
+                }
+            );
+
         };
 
         $scope.update = function (id) {

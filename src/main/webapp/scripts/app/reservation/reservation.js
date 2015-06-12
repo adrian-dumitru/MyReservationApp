@@ -32,7 +32,7 @@ angular.module('myreservationappApp')
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/reservation/reservation-detail.html',
+                        templateUrl: 'scripts/app/reservation/reservation-detail.html',
                         controller: 'ReservationDetailController'
                     }
                 },

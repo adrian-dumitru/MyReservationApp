@@ -11,8 +11,16 @@ angular.module('myreservationappApp')
                     var dayFrom = data.day.split("-");
                     data.day = new Date(new Date(dayFrom[0], dayFrom[1] - 1, dayFrom[2]));
                     return data;
+                },
+                interceptor:{
+                    response: function(data){
+                        return data;
+                    },
+                    responseError: function(err){
+                        return err;
+                    }
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT'}
         });
     });

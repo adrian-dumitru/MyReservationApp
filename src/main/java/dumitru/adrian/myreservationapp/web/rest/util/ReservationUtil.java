@@ -1,6 +1,8 @@
 package dumitru.adrian.myreservationapp.web.rest.util;
 
 import java.lang.reflect.Array;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -36,5 +38,7 @@ public class ReservationUtil {
 
         return result;
     }
+
+
 
 }
