@@ -12,6 +12,8 @@
                 "restaurant_tables": "Restaurant_tables",
                 "reservation": "Reservations",
                 "reservation": "Reservation",
+                "reservation_tables": "Reservation_tables",
+                "general_reservation": "General_reservation",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

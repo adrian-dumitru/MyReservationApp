@@ -1,7 +1,6 @@
 package dumitru.adrian.myreservationapp.service;
 
 import dumitru.adrian.myreservationapp.domain.Authority;
-import dumitru.adrian.myreservationapp.domain.PersistentToken;
 import dumitru.adrian.myreservationapp.domain.User;
 import dumitru.adrian.myreservationapp.repository.AuthorityRepository;
 import dumitru.adrian.myreservationapp.repository.PersistentTokenRepository;

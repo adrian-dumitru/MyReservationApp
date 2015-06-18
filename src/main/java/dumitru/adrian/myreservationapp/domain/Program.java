@@ -1,11 +1,8 @@
 package dumitru.adrian.myreservationapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -19,47 +16,22 @@ public class Program implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "monday_start")
-    private String mondayStart;
+    @Column(name = "day")
+    private String day;
 
-    @Column(name = "monday_end")
-    private String mondayEnd;
+    @Column(name = "status")
+    private String status;
 
-    @Column(name = "tuesday_start")
-    private String tuesdayStart;
+    @Temporal(TemporalType.TIME)
+    @Column(name = "start_hour")
+    private Date start_hour;
 
-    @Column(name = "tuesday_end")
-    private String tuesdayEnd;
+    @Temporal(TemporalType.TIME)
+    @Column(name = "end_hour")
+    private Date end_hour;
 
-    @Column(name = "wednesday_start")
-    private String wednesdayStart;
-
-    @Column(name = "wednesday_end")
-    private String wednesdayEnd;
-
-    @Column(name = "thursday_start")
-    private String thursdayStart;
-
-    @Column(name = "thursday_end")
-    private String thursdayEnd;
-
-    @Column(name = "friday_start")
-    private String fridayStart;
-
-    @Column(name = "friday_end")
-    private String fridayEnd;
-
-    @Column(name = "saturday_start")
-    private String saturdayStart;
-
-    @Column(name = "saturday_end")
-    private String saturdayEnd;
-
-    @Column(name = "sunday_start")
-    private String sundayStart;
-
-    @Column(name = "sunday_end")
-    private String sundayEnd;
+    @ManyToOne
+    private Restaurant restaurant;
 
     public Long getId() {
         return id;
@@ -69,117 +41,44 @@ public class Program implements Serializable {
         this.id = id;
     }
 
-    public String getMondayStart() {
-        return mondayStart;
+    public String getDay() {
+        return day;
     }
 
-    public void setMondayStart(String mondayStart) {
-        this.mondayStart = mondayStart;
+    public void setDay(String day) {
+        this.day = day;
     }
 
-    public String getMondayEnd() {
-        return mondayEnd;
+    public String getStatus() {
+        return status;
     }
 
-    public void setMondayEnd(String mondayEnd) {
-        this.mondayEnd = mondayEnd;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getTuesdayStart() {
-        return tuesdayStart;
+    public Date getStart_hour() { return start_hour; }
+
+    public void setStart_hour(Date start_hour) {
+        this.start_hour = start_hour;
     }
 
-    public void setTuesdayStart(String tuesdayStart) {
-        this.tuesdayStart = tuesdayStart;
+    public Date getEnd_hour() {
+        return end_hour;
     }
 
-    public String getTuesdayEnd() {
-        return tuesdayEnd;
+    public void setEnd_hour(Date end_hour) {
+        this.end_hour = end_hour;
     }
 
-    public void setTuesdayEnd(String tuesdayEnd) {
-        this.tuesdayEnd = tuesdayEnd;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public String getWednesdayStart() {
-        return wednesdayStart;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public void setWednesdayStart(String wednesdayStart) {
-        this.wednesdayStart = wednesdayStart;
-    }
-
-    public String getWednesdayEnd() {
-        return wednesdayEnd;
-    }
-
-    public void setWednesdayEnd(String wednesdayEnd) {
-        this.wednesdayEnd = wednesdayEnd;
-    }
-
-    public String getThursdayStart() {
-        return thursdayStart;
-    }
-
-    public void setThursdayStart(String thursdayStart) {
-        this.thursdayStart = thursdayStart;
-    }
-
-    public String getThursdayEnd() {
-        return thursdayEnd;
-    }
-
-    public void setThursdayEnd(String thursdayEnd) {
-        this.thursdayEnd = thursdayEnd;
-    }
-
-    public String getFridayStart() {
-        return fridayStart;
-    }
-
-    public void setFridayStart(String fridayStart) {
-        this.fridayStart = fridayStart;
-    }
-
-    public String getFridayEnd() {
-        return fridayEnd;
-    }
-
-    public void setFridayEnd(String fridayEnd) {
-        this.fridayEnd = fridayEnd;
-    }
-
-    public String getSaturdayStart() {
-        return saturdayStart;
-    }
-
-    public void setSaturdayStart(String saturdayStart) {
-        this.saturdayStart = saturdayStart;
-    }
-
-    public String getSaturdayEnd() {
-        return saturdayEnd;
-    }
-
-    public void setSaturdayEnd(String saturdayEnd) {
-        this.saturdayEnd = saturdayEnd;
-    }
-
-    public String getSundayStart() {
-        return sundayStart;
-    }
-
-    public void setSundayStart(String sundayStart) {
-        this.sundayStart = sundayStart;
-    }
-
-    public String getSundayEnd() {
-        return sundayEnd;
-    }
-
-    public void setSundayEnd(String sundayEnd) {
-        this.sundayEnd = sundayEnd;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -206,20 +105,10 @@ public class Program implements Serializable {
     public String toString() {
         return "Program{" +
                 "id=" + id +
-                ", mondayStart='" + mondayStart + "'" +
-                ", mondayEnd='" + mondayEnd + "'" +
-                ", tuesdayStart='" + tuesdayStart + "'" +
-                ", tuesdayEnd='" + tuesdayEnd + "'" +
-                ", wednesdayStart='" + wednesdayStart + "'" +
-                ", wednesdayEnd='" + wednesdayEnd + "'" +
-                ", thursdayStart='" + thursdayStart + "'" +
-                ", thursdayEnd='" + thursdayEnd + "'" +
-                ", fridayStart='" + fridayStart + "'" +
-                ", fridayEnd='" + fridayEnd + "'" +
-                ", saturdayStart='" + saturdayStart + "'" +
-                ", saturdayEnd='" + saturdayEnd + "'" +
-                ", sundayStart='" + sundayStart + "'" +
-                ", sundayEnd='" + sundayEnd + "'" +
+                ", day='" + day + "'" +
+                ", status='" + status + "'" +
+                ", start_hour='" + start_hour + "'" +
+                ", end_hour='" + end_hour + "'" +
                 '}';
     }
 }

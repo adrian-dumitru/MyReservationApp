@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface ProgramRepository extends JpaRepository<Program,Long> {
 
+    List<Program> findAllByRestaurantId(Long id);
+
+    Program findOneByRestaurantIdAndDay(Long id,String day);
+
 }

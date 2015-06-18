@@ -1,12 +1,8 @@
 package dumitru.adrian.myreservationapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -44,9 +40,6 @@ public class Restaurant implements Serializable {
 
     @OneToOne
     private Location location;
-
-    @OneToOne
-    private Program program;
 
     @OneToOne
     private Restaurant_tables restaurant_tables;
@@ -113,14 +106,6 @@ public class Restaurant implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-    public Program getProgram() {
-        return program;
-    }
-
-    public void setProgram(Program program) {
-        this.program = program;
     }
 
     public Restaurant_tables getRestaurant_tables() {

@@ -10,26 +10,23 @@
     <!--
         Added the entity Program.
     -->
-    <changeSet id="20150526124958" author="adrian.dumitru">
+    <changeSet id="20150526124957" author="adrian.dumitru">
         <createTable tableName="T_PROGRAM">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="monday_start" type="varchar(255)"/>
-            <column name="monday_end" type="varchar(255)"/>
-            <column name="tuesday_start" type="varchar(255)"/>
-            <column name="tuesday_end" type="varchar(255)"/>
-            <column name="wednesday_start" type="varchar(255)"/>
-            <column name="wednesday_end" type="varchar(255)"/>
-            <column name="thursday_start" type="varchar(255)"/>
-            <column name="thursday_end" type="varchar(255)"/>
-            <column name="friday_start" type="varchar(255)"/>
-            <column name="friday_end" type="varchar(255)"/>
-            <column name="saturday_start" type="varchar(255)"/>
-            <column name="saturday_end" type="varchar(255)"/>
-            <column name="sunday_start" type="varchar(255)"/>
-            <column name="sunday_end" type="varchar(255)"/>
+            <column name="day" type="varchar(255)"/>
+            <column name="status" type="varchar(255)"/>
+            <column name="start_hour" type="time"/>
+            <column name="end_hour" type="time"/>
+            <column name="restaurant_id" type="bigint"/>
         </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="restaurant_id"
+                                 baseTableName="T_PROGRAM"
+                                 constraintName="fk_program_restaurant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_RESTAURANT"/>
 
     </changeSet>
 </databaseChangeLog>

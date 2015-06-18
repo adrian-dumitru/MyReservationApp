@@ -4,12 +4,6 @@ angular.module('myreservationappApp')
     .controller('ReservationController', function ($scope, Reservation, ReservationMore,Principal,Restaurant,$filter) {
         $scope.reservations = [];
 
-
-        $scope.getTime = function(x){
-            return $filter('date')(x,"HH:mm");
-        };
-
-
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -35,14 +29,33 @@ angular.module('myreservationappApp')
 
         $scope.create = function () {
             if($scope.start_hour != null)
-                $scope.reservation.start_hour = $scope.getTime($scope.start_hour);
+                $scope.reservation.start_hour = $scope.start_hour;
             if($scope.end_hour != null)
-                $scope.reservation.end_hour = $scope.getTime($scope.end_hour);
+                $scope.reservation.end_hour = $scope.end_hour;
+            else if ($scope.start_hour != null) {
+                $scope.reservation.end_hour = new Date();
+                $scope.reservation.end_hour.setTime($scope.start_hour.getTime() + (2 * 60 * 60 * 1000));
+                //$scope.reservation.start_hour = $filter('date')($scope.reservation.start_hour,"mediumTime")
+                //$scope.reservation.end_hour = $filter('date')($scope.reservation.end_hour,"mediumTime")
+            }
+
+            $scope.reservation.day = $filter('date')($scope.day,"yyyy-MM-dd");
+
+            if(($filter('date')($scope.reservation.start_hour,"yyyy-MM-dd")) ===
+                ($filter('date')($scope.reservation.end_hour,"yyyy-MM-dd")))
+
+                $scope.reservation.finish = $scope.reservation.day;
+            else{
+                $scope.finish = new Date();
+                $scope.finish.setDate($scope.day.getDate() + 1);
+                $scope.reservation.finish = $filter('date')($scope.finish,"yyyy-MM-dd");
+            }
+
             if($scope.reservation.user == null)
                 $scope.reservation.user = $scope.account;
 
             Reservation.update($scope.reservation,
-                function(data){
+                function(){
                     $scope.loadAll();
                     $('#saveReservationModal').modal('hide');
                     $scope.clear();
@@ -77,6 +90,8 @@ angular.module('myreservationappApp')
         };
 
         $scope.clear = function () {
+            $scope.start_hour = null;
+            $scope.end_hour = null;
             $scope.reservation = {day: null, start_hour: null, end_hour: null, tables: null, comment: null, id: null};
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();

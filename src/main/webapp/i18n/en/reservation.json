@@ -16,10 +16,9 @@
             "start_hour": "Start_hour",
             "end_hour": "End_hour",
             "tables": "Tables",
-            "comment": "Comment",
             "persons": "Persons",
-            "restaurant": "restaurant",
-            "user": "user"
+            "comment": "Comment",
+            "User": "User"
         }
     }
 }

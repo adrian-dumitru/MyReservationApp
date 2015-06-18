@@ -9,6 +9,16 @@
             "relationshipType": "many-to-one",
             "otherEntityNameCapitalized": "User",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "reservation_tables",
+            "relationshipNameCapitalized": "Reservation_tables",
+            "relationshipFieldName": "reservation_tables",
+            "otherEntityName": "reservation_tables",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Reservation_tables",
+            "ownerSide": true
         }
     ],
     "fields": [
@@ -26,24 +36,33 @@
         },
         {
             "fieldId": 2,
+            "fieldName": "finish",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "Finish",
+            "fieldNameUnderscored": "finish",
+            "fieldInJavaBeanMethod": "Finish",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
             "fieldName": "start_hour",
-            "fieldType": "String",
+            "fieldType": "Time",
             "fieldNameCapitalized": "Start_hour",
             "fieldNameUnderscored": "start_hour",
             "fieldInJavaBeanMethod": "Start_hour",
             "fieldValidate": false
         },
         {
-            "fieldId": 3,
+            "fieldId": 4,
             "fieldName": "end_hour",
-            "fieldType": "String",
+            "fieldType": "Time",
             "fieldNameCapitalized": "End_hour",
             "fieldNameUnderscored": "end_hour",
             "fieldInJavaBeanMethod": "End_hour",
             "fieldValidate": false
         },
         {
-            "fieldId": 4,
+            "fieldId": 5,
             "fieldName": "tables",
             "fieldType": "Integer",
             "fieldNameCapitalized": "Tables",
@@ -58,7 +77,7 @@
             "fieldValidateRulesMax": "100"
         },
         {
-            "fieldId": 5,
+            "fieldId": 6,
             "fieldName": "persons",
             "fieldType": "Integer",
             "fieldNameCapitalized": "Persons",
@@ -73,7 +92,7 @@
             "fieldValidateRulesMax": "100"
         },
         {
-            "fieldId": 6,
+            "fieldId": 7,
             "fieldName": "comment",
             "fieldType": "String",
             "fieldNameCapitalized": "Comment",

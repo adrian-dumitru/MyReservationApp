@@ -7,9 +7,10 @@
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150506111741_added_entity_Restaurant_tables.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150526123747_added_entity_Location.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150526110036_added_entity_Restaurant.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150526124957_added_entity_Program.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20150526130036_added_entity_Restaurant.xml" relativeToChangelogFile="false"/>
-
+    <include file="classpath:config/liquibase/changelog/20150610150917_added_entity_Reservation_tables.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150611143124_added_entity_Reservation.xml" relativeToChangelogFile="false"/>
+
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

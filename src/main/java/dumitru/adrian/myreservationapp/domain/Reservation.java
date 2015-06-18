@@ -1,18 +1,9 @@
 package dumitru.adrian.myreservationapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import dumitru.adrian.myreservationapp.domain.util.CustomLocalDateSerializer;
-import dumitru.adrian.myreservationapp.domain.util.ISO8601LocalDateDeserializer;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -27,17 +18,21 @@ public class Reservation implements Serializable {
     private Long id;
 
     @NotNull
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+    @Temporal(TemporalType.DATE)
     @Column(name = "day", nullable = false)
-    private LocalDate day;
+    private Date day;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "finish", nullable = false)
+    private Date finish;
+
+    @Temporal(TemporalType.TIME)
     @Column(name = "start_hour")
-    private String start_hour;
+    private Date start_hour;
 
+    @Temporal(TemporalType.TIME)
     @Column(name = "end_hour")
-    private String end_hour;
+    private Date end_hour;
 
     @Min(value = 1)
     @Max(value = 100)
@@ -55,6 +50,9 @@ public class Reservation implements Serializable {
     @ManyToOne
     private User user;
 
+    @OneToOne
+    private Reservation_tables reservation_tables;
+
     public Long getId() {
         return id;
     }
@@ -63,27 +61,35 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDay() {
+    public Date getDay() {
         return day;
     }
 
-    public void setDay(LocalDate day) {
+    public void setDay(Date day) {
         this.day = day;
     }
 
-    public String getStart_hour() {
+    public Date getFinish() {
+        return finish;
+    }
+
+    public void setFinish(Date finish) {
+        this.finish = finish;
+    }
+
+    public Date getStart_hour() {
         return start_hour;
     }
 
-    public void setStart_hour(String start_hour) {
+    public void setStart_hour(Date start_hour) {
         this.start_hour = start_hour;
     }
 
-    public String getEnd_hour() {
+    public Date getEnd_hour() {
         return end_hour;
     }
 
-    public void setEnd_hour(String end_hour) {
+    public void setEnd_hour(Date end_hour) {
         this.end_hour = end_hour;
     }
 
@@ -119,6 +125,14 @@ public class Reservation implements Serializable {
         this.user = user;
     }
 
+    public Reservation_tables getReservation_tables() {
+        return reservation_tables;
+    }
+
+    public void setReservation_tables(Reservation_tables reservation_tables) {
+        this.reservation_tables = reservation_tables;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -145,6 +159,7 @@ public class Reservation implements Serializable {
         return "Reservation{" +
                 "id=" + id +
                 ", day='" + day + "'" +
+                ", finish='" + finish + "'" +
                 ", start_hour='" + start_hour + "'" +
                 ", end_hour='" + end_hour + "'" +
                 ", tables='" + tables + "'" +

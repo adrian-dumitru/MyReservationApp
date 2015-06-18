@@ -26,7 +26,7 @@
             "relationshipNameCapitalized": "Program",
             "relationshipFieldName": "program",
             "otherEntityName": "program",
-            "relationshipType": "one-to-one",
+            "relationshipType": "one-to-many",
             "otherEntityNameCapitalized": "Program",
             "ownerSide": true
         },

@@ -3,15 +3,8 @@
 angular.module('myreservationappApp')
     .factory('Program', function ($resource) {
         return $resource('api/programs/:id', {}, {
-            'query': { method: 'GET', isArray: true},
-            'get': {
-                method: 'GET',
-                transformResponse: function (data) {
-                    data = angular.fromJson(data);
-                    return data;
-                }
-            },
-            'save':{ method:'POST' },
+            'get': { method: 'GET', isArray: true},
+            'save': { method: 'POST'},
             'update': { method:'PUT' }
         });
     });

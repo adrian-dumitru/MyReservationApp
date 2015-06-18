@@ -2,14 +2,15 @@ package dumitru.adrian.myreservationapp.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * A Restaurant_tables.
+ * A Reservation_tables.
  */
 @Entity
-@Table(name = "T_RESTAURANT_TABLES")
-public class Restaurant_tables implements Serializable {
+@Table(name = "T_RESERVATION_TABLES")
+public class Reservation_tables implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +24,14 @@ public class Restaurant_tables implements Serializable {
 
     @Column(name = "six_persons_table")
     private Integer six_persons_table;
+
+    private Reservation_tables(){};
+
+    public Reservation_tables(ArrayList<Integer> tables){
+        two_persons_table = tables.get(0);
+        four_persons_table = tables.get(1);
+        six_persons_table = tables.get(2);
+    }
 
     public Long getId() {
         return id;
@@ -65,9 +74,9 @@ public class Restaurant_tables implements Serializable {
             return false;
         }
 
-        Restaurant_tables restaurant_tables = (Restaurant_tables) o;
+        Reservation_tables reservation_tables = (Reservation_tables) o;
 
-        if ( ! Objects.equals(id, restaurant_tables.id)) return false;
+        if ( ! Objects.equals(id, reservation_tables.id)) return false;
 
         return true;
     }
@@ -79,7 +88,7 @@ public class Restaurant_tables implements Serializable {
 
     @Override
     public String toString() {
-        return "Restaurant_tables{" +
+        return "Reservation_tables{" +
                 "id=" + id +
                 ", two_persons_table='" + two_persons_table + "'" +
                 ", four_persons_table='" + four_persons_table + "'" +

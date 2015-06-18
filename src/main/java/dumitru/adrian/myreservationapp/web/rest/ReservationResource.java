@@ -2,7 +2,10 @@ package dumitru.adrian.myreservationapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import dumitru.adrian.myreservationapp.domain.Reservation;
-import dumitru.adrian.myreservationapp.repository.ReservationRepository;
+import dumitru.adrian.myreservationapp.domain.Reservation_tables;
+import dumitru.adrian.myreservationapp.repository.*;
+import dumitru.adrian.myreservationapp.service.ReservationService;
+import dumitru.adrian.myreservationapp.service.util.ReservationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -29,12 +32,18 @@ public class ReservationResource {
     @Inject
     private ReservationRepository reservationRepository;
 
+    @Inject
+    private ReservationService reservationService;
+
+    @Inject
+    private Reservation_tablesRepository reservation_tablesRepository;
+
     /**
      * POST  /reservations -> Create a new reservation.
      */
     @RequestMapping(value = "/reservations",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> create(@Valid @RequestBody Reservation reservation) throws URISyntaxException {
         log.debug("REST request to save Reservation : {}", reservation);
@@ -42,12 +51,16 @@ public class ReservationResource {
             return ResponseEntity.badRequest().header("Failure", "A new reservation cannot already have an ID").build();
         }
 
-        if(reservation.getPersons() > 6)
+        try{
+            reservationService.checkReservation(reservation);
+        }catch (Exception e) {
+            System.out.println("RESERVATION ERROR: " + e.getMessage());
             return ResponseEntity.badRequest().build();
-        else {
-            reservationRepository.save(reservation);
-            return ResponseEntity.created(new URI("/api/reservations/" + reservation.getId())).build();
         }
+
+//        reservationRepository.save(reservation);
+        return ResponseEntity.created(new URI("/api/reservations/" + reservation.getId())).build();
+
     }
 
     /**
@@ -70,8 +83,8 @@ public class ReservationResource {
      * GET  /reservations -> get all the reservations.
      */
     @RequestMapping(value = "/reservations",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Reservation> getAll() {
         log.debug("REST request to get all Reservations");
@@ -82,8 +95,8 @@ public class ReservationResource {
      * GET  /reservations/:id -> get the "id" reservation.
      */
     @RequestMapping(value = "/reservations/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Reservation> get(@PathVariable Long id) {
         log.debug("REST request to get Reservation : {}", id);
@@ -107,11 +120,13 @@ public class ReservationResource {
      * DELETE  /reservations/:id -> delete the "id" reservation.
      */
     @RequestMapping(value = "/reservations/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Reservation : {}", id);
+        Reservation_tables reservation_tables = reservationRepository.getOne(id).getReservation_tables();
         reservationRepository.delete(id);
+        reservation_tablesRepository.delete(reservation_tables);
     }
 }

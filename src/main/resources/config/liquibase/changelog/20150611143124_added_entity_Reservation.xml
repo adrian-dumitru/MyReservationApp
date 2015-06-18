@@ -18,19 +18,29 @@
             <column name="day" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="start_hour" type="varchar(255)"/>
-            <column name="end_hour" type="varchar(255)"/>
-            <column name="tables" type="integer"/>
-            <column name="persons" type="integer"/>
-            <column name="comment" type="varchar(255)"/>
-            <column name="user_id" type="bigint"/>
+            <column name="finish"       type="date"></column>
+            <column name="start_hour"   type="time"/>
+            <column name="end_hour"     type="time"/>
+            <column name="tables"       type="integer"/>
+            <column name="persons"      type="integer"/>
+            <column name="comment"      type="varchar(255)"/>
+            <column name="user_id"      type="bigint"/>
+            <column name="reservation_tables_id" type="bigint"/>
         </createTable>
-        
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="T_RESERVATION"
                                  constraintName="fk_reservation_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="T_USER"/>
 
+        <addForeignKeyConstraint baseColumnNames="reservation_tables_id"
+                                 baseTableName="T_RESERVATION"
+                                 constraintName="fk_reservation_reservation_tables_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_RESERVATION_TABLES"/>
+
+
     </changeSet>
+
 </databaseChangeLog>

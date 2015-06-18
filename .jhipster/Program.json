@@ -6,7 +6,7 @@
             "relationshipNameCapitalized": "Restaurant",
             "relationshipFieldName": "restaurant",
             "otherEntityName": "restaurant",
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "otherEntityNameCapitalized": "Restaurant",
             "ownerSide": false
         }
@@ -14,128 +14,38 @@
     "fields": [
         {
             "fieldId": 1,
-            "fieldName": "mondayStart",
+            "fieldName": "day",
             "fieldType": "String",
-            "fieldNameCapitalized": "MondayStart",
-            "fieldNameUnderscored": "monday_start",
-            "fieldInJavaBeanMethod": "MondayStart",
+            "fieldNameCapitalized": "Day",
+            "fieldNameUnderscored": "day",
+            "fieldInJavaBeanMethod": "Day",
             "fieldValidate": false
         },
         {
             "fieldId": 2,
-            "fieldName": "mondayEnd",
+            "fieldName": "status",
             "fieldType": "String",
-            "fieldNameCapitalized": "MondayEnd",
-            "fieldNameUnderscored": "monday_end",
-            "fieldInJavaBeanMethod": "MondayEnd",
+            "fieldNameCapitalized": "Status",
+            "fieldNameUnderscored": "status",
+            "fieldInJavaBeanMethod": "Status",
             "fieldValidate": false
         },
         {
             "fieldId": 3,
-            "fieldName": "tuesdayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "TuesdayStart",
-            "fieldNameUnderscored": "tuesday_start",
-            "fieldInJavaBeanMethod": "TuesdayStart",
+            "fieldName": "start_hour",
+            "fieldType": "Time",
+            "fieldNameCapitalized": "StartHour",
+            "fieldNameUnderscored": "start_hour",
+            "fieldInJavaBeanMethod": "StartHour",
             "fieldValidate": false
         },
         {
             "fieldId": 4,
-            "fieldName": "tuesdayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "TuesdayEnd",
-            "fieldNameUnderscored": "tuesday_end",
-            "fieldInJavaBeanMethod": "TuesdayEnd",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "wednesdayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "WednesdayStart",
-            "fieldNameUnderscored": "wednesday_start",
-            "fieldInJavaBeanMethod": "WednesdayStart",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 6,
-            "fieldName": "wednesdayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "WednesdayEnd",
-            "fieldNameUnderscored": "wednesday_end",
-            "fieldInJavaBeanMethod": "WednesdayEnd",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 7,
-            "fieldName": "thursdayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "ThursdayStart",
-            "fieldNameUnderscored": "thursday_start",
-            "fieldInJavaBeanMethod": "ThursdayStart",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 8,
-            "fieldName": "thursdayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "ThursdayEnd",
-            "fieldNameUnderscored": "thursday_end",
-            "fieldInJavaBeanMethod": "ThursdayEnd",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 9,
-            "fieldName": "fridayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "FridayStart",
-            "fieldNameUnderscored": "friday_start",
-            "fieldInJavaBeanMethod": "FridayStart",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 10,
-            "fieldName": "fridayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "FridayEnd",
-            "fieldNameUnderscored": "friday_end",
-            "fieldInJavaBeanMethod": "FridayEnd",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 11,
-            "fieldName": "saturdayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SaturdayStart",
-            "fieldNameUnderscored": "saturday_start",
-            "fieldInJavaBeanMethod": "SaturdayStart",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 12,
-            "fieldName": "saturdayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SaturdayEnd",
-            "fieldNameUnderscored": "saturday_end",
-            "fieldInJavaBeanMethod": "SaturdayEnd",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 13,
-            "fieldName": "sundayStart",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SundayStart",
-            "fieldNameUnderscored": "sunday_start",
-            "fieldInJavaBeanMethod": "SundayStart",
-            "fieldValidate": false
-        },
-        {
-            "fieldId": 14,
-            "fieldName": "sundayEnd",
-            "fieldType": "String",
-            "fieldNameCapitalized": "SundayEnd",
-            "fieldNameUnderscored": "sunday_end",
-            "fieldInJavaBeanMethod": "SundayEnd",
+            "fieldName": "end_hour",
+            "fieldType": "Time",
+            "fieldNameCapitalized": "EndHour",
+            "fieldNameUnderscored": "end_hour",
+            "fieldInJavaBeanMethod": "EndHour",
             "fieldValidate": false
         }
     ],
