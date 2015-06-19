@@ -56,11 +56,15 @@ angular.module('myreservationappApp')
 
             Reservation.update($scope.reservation,
                 function(){
+                    //console.log(headers);
                     $scope.loadAll();
                     $('#saveReservationModal').modal('hide');
                     $scope.clear();
                 },function(err){
-                    console.log(err);
+                    $scope.error_message = err.headers('Failure');
+                    $scope.error_message_location = 'myreservationappApp.reservation.errors.'+ $scope.error_message;
+                    $('#errorReservation').modal('show');
+
                 }
             );
 

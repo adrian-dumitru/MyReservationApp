@@ -79,11 +79,14 @@ public class ReservationService {
         Date program_start_hour = ReservationUtil.createDate(reservation.getDay(), program.getStart_hour());
         Date program_end_hour = ReservationUtil.createDate(reservation.getDay(), program.getEnd_hour());
 
+        if(reservation_start_hour.before(new Date()))
+            throw new Exception("PAST_RESERVATION_TIME");
+
         if(program_end_hour.before(program_start_hour))
             program_end_hour = new Date(program_end_hour.getTime() + (1000 * 60 * 60 * 24));
 
         if(reservation_start_hour.before(program_start_hour) || reservation_end_hour.after(program_end_hour))
-            throw new Exception("NOT IN PROGRAM PERIOD") ;
+            throw new Exception("NOT_IN_PROGRAM_PERIOD") ;
 
         List<Reservation> reservations = reservationRepository.findAllBetweenDates(ReservationUtil.convertDateToString(reservation_start_hour),
             ReservationUtil.convertDateToString(reservation_end_hour));
@@ -103,7 +106,7 @@ public class ReservationService {
             reservation.setReservation_tables(reservation_tables);
             reservationRepository.save(reservation);
         }else
-            throw new Exception("NOT ENOUGH TABLES");
+            throw new Exception("NOT_ENOUGH_TABLES");
     }
 
 }

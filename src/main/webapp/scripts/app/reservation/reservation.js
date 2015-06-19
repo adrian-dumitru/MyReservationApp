@@ -39,6 +39,7 @@ angular.module('myreservationappApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('reservation');
+                        $translatePartialLoader.addPart('error');
                         return $translate.refresh();
                     }]
                 }

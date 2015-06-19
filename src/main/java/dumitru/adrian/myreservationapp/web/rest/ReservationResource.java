@@ -55,10 +55,9 @@ public class ReservationResource {
             reservationService.checkReservation(reservation);
         }catch (Exception e) {
             System.out.println("RESERVATION ERROR: " + e.getMessage());
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().header("Failure",e.getMessage()).build();
         }
 
-//        reservationRepository.save(reservation);
         return ResponseEntity.created(new URI("/api/reservations/" + reservation.getId())).build();
 
     }
@@ -75,6 +74,7 @@ public class ReservationResource {
         if (reservation.getId() == null) {
             return create(reservation);
         }
+        this.delete(reservation.getId());
         reservationRepository.save(reservation);
         return ResponseEntity.ok().build();
     }
@@ -125,8 +125,12 @@ public class ReservationResource {
     @Timed
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Reservation : {}", id);
-        Reservation_tables reservation_tables = reservationRepository.getOne(id).getReservation_tables();
-        reservationRepository.delete(id);
-        reservation_tablesRepository.delete(reservation_tables);
+        long reservation_tables_id = reservationRepository.findOne(id).getReservation_tables().getId();
+        try{
+            reservationRepository.delete(id);
+            reservation_tablesRepository.delete(reservation_tables_id);
+        }catch (Exception e){
+            System.out.println("Reservation or reservation tables couldn't be deleted");
+        }
     }
 }

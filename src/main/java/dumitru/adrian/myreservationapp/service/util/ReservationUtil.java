@@ -24,15 +24,15 @@ public class ReservationUtil {
 
         ArrayList<Integer> result = new ArrayList<>();
 
-        while(t6 <= six_persons_table && (persons >= 5 || (two_persons_table * 2 + four_persons_table * 4 < persons)) && six_persons_table != 0) {
+        while(t6 < six_persons_table && (persons >= 5 || (two_persons_table * 2 + four_persons_table * 4 < persons)) && six_persons_table != 0) {
             t6++;
             persons -= 6;
         }
-        while(t4 <= four_persons_table && (persons >= 3 || (two_persons_table * 2 < persons)) && four_persons_table != 0){
+        while(t4 < four_persons_table && (persons >= 3 || (two_persons_table * 2 < persons)) && four_persons_table != 0){
             t4++;
             persons -= 4;
         }
-        while(t2 <= two_persons_table && persons >= 1 && two_persons_table != 0){
+        while(t2 < two_persons_table && persons >= 1 && two_persons_table != 0){
             t2++;
             persons -= 2;
         }

@@ -18,7 +18,12 @@
             "tables": "Tables",
             "persons": "Persons",
             "comment": "Comment",
-            "User": "User"
+            "User": "User",
+            "errors":{
+                "PAST_RESERVATION_TIME": "You can not chose a date from the past.",
+                "NOT_IN_PROGRAM_PERIOD": "You reservation doesn't match the program.",
+                "NOT_ENOUGH_TABLES": "We are sorry, we do not have enough space for all of you :("
+            }
         }
     }
 }
