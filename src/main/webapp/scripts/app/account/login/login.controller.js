@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myreservationappApp')
-    .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth, $translate,Facebook) {
+    .controller('LoginController', function ($rootScope, $route, $scope, $state, $timeout, Auth, $translate,Facebook) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -17,7 +17,8 @@ angular.module('myreservationappApp')
                 if ($rootScope.previousStateName === 'register') {
                     $state.go('home');
                 } else {
-                    $rootScope.back();
+                    //$rootScope.back();
+                    $state.go('home');
                 }
             }).catch(function () {
                 $scope.authenticationError = true;

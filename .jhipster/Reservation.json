@@ -19,13 +19,23 @@
             "relationshipType": "one-to-one",
             "otherEntityNameCapitalized": "Reservation_tables",
             "ownerSide": true
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "restaurant",
+            "relationshipNameCapitalized": "Restaurant",
+            "relationshipFieldName": "restaurant",
+            "otherEntityName": "restaurant",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Restaurant",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldId": 1,
             "fieldName": "day",
-            "fieldType": "LocalDate",
+            "fieldType": "Date",
             "fieldNameCapitalized": "Day",
             "fieldNameUnderscored": "day",
             "fieldInJavaBeanMethod": "Day",
@@ -37,7 +47,7 @@
         {
             "fieldId": 2,
             "fieldName": "finish",
-            "fieldType": "LocalDate",
+            "fieldType": "Date",
             "fieldNameCapitalized": "Finish",
             "fieldNameUnderscored": "finish",
             "fieldInJavaBeanMethod": "Finish",
@@ -46,7 +56,7 @@
         {
             "fieldId": 3,
             "fieldName": "start_hour",
-            "fieldType": "Time",
+            "fieldType": "Date",
             "fieldNameCapitalized": "Start_hour",
             "fieldNameUnderscored": "start_hour",
             "fieldInJavaBeanMethod": "Start_hour",
@@ -55,7 +65,7 @@
         {
             "fieldId": 4,
             "fieldName": "end_hour",
-            "fieldType": "Time",
+            "fieldType": "Date",
             "fieldNameCapitalized": "End_hour",
             "fieldNameUnderscored": "end_hour",
             "fieldInJavaBeanMethod": "End_hour",

@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="myreservationappApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+    <h2><span translate="myreservationappApp.reservation.detail.title">Reservation</span></h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -15,7 +15,7 @@
                         <span translate="myreservationappApp.reservation.day">Day</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.day}}" readonly>
+                        <span>{{reservation.day}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -23,7 +23,7 @@
                         <span translate="myreservationappApp.reservation.start_hour">Start_hour</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.start_hour}}" readonly>
+                        <span>{{reservation.start_hour}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -31,15 +31,34 @@
                         <span translate="myreservationappApp.reservation.end_hour">End_hour</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.end_hour}}" readonly>
+                        <span>{{reservation.end_hour}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <span translate="myreservationappApp.reservation.tables">Tables</span>
                     </td>
-                    <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.tables}}" readonly>
+                    <td ng-show="reservation.tables">
+                        <span>{{reservation.tables}}</span>
+                    </td>
+                    <td ng-hide="reservation.tables">
+                        <table>
+                            <tr>
+                                <td><span translate="myreservationappApp.reservation.two_persons_table"
+                                          translate-values="{id: '{{reservation.reservation_tables.two_persons_table}}'}">
+                                    </span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="myreservationappApp.reservation.four_persons_table"
+                                          translate-values="{id: '{{reservation.reservation_tables.four_persons_table}}'}">
+                                    </span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="myreservationappApp.reservation.six_persons_table"
+                                          translate-values="{id: '{{reservation.reservation_tables.six_persons_table}}'}">
+                                    </span></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +66,7 @@
                         <span translate="myreservationappApp.reservation.persons">Persons</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.persons}}" readonly>
+                        <span>{{reservation.persons}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +74,7 @@
                         <span translate="myreservationappApp.reservation.comment">Comment</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.comment}}" readonly>
+                        <span>{{reservation.comment}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -63,7 +82,7 @@
                         <span translate="myreservationappApp.reservation.User">User</span>
                     </td>
                     <td>
-                        <input type="text" class="input-sm form-control" value="{{reservation.User.id}}" readonly>
+                        <span>{{reservation.user.firstName}} {{reservation.user.lastName}}</span>
                     </td>
                 </tr>
             </tbody>

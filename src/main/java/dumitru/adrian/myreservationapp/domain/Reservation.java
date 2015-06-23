@@ -1,5 +1,6 @@
 package dumitru.adrian.myreservationapp.domain;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -18,12 +19,11 @@ public class Reservation implements Serializable {
     private Long id;
 
     @NotNull
-    @Temporal(TemporalType.DATE)
     @Column(name = "day", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date day;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "finish", nullable = false)
+    @Column(name = "finish")
     private Date finish;
 
     @Temporal(TemporalType.TIME)
@@ -52,6 +52,9 @@ public class Reservation implements Serializable {
 
     @OneToOne
     private Reservation_tables reservation_tables;
+
+    @ManyToOne
+    private Restaurant restaurant;
 
     public Long getId() {
         return id;
@@ -131,6 +134,14 @@ public class Reservation implements Serializable {
 
     public void setReservation_tables(Reservation_tables reservation_tables) {
         this.reservation_tables = reservation_tables;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override

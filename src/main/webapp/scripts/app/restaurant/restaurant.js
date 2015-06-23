@@ -20,6 +20,8 @@ angular.module('myreservationappApp')
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('restaurant');
                         $translatePartialLoader.addPart('profile');
+                        $translatePartialLoader.addPart('comment');
+                        $translatePartialLoader.addPart('reservation');
                         return $translate.refresh();
                     }]
                 }

@@ -165,8 +165,8 @@
                     <th translate="myreservationappApp.reservation.day">Day</th>
                     <th translate="myreservationappApp.reservation.start_hour">Start_hour</th>
                     <th translate="myreservationappApp.reservation.end_hour">End_hour</th>
-                    <th translate="myreservationappApp.reservation.tables">Tables</th>
-                    <th translate="myreservationappApp.reservation.persons">Persons</th>
+                    <th translate="myreservationappApp.reservation.tables" ng-hide="restaurant.type != 'club'">Tables</th>
+                    <th translate="myreservationappApp.reservation.persons" ng-hide="restaurant.type === 'club'">Persons</th>
                     <th></th>
                 </tr>
             </thead>
@@ -175,8 +175,8 @@
                     <td>{{reservation.day}}</td>
                     <td>{{reservation.start_hour}}</td>
                     <td>{{reservation.end_hour}}</td>
-                    <td>{{reservation.tables}}</td>
-                    <td>{{reservation.persons}}</td>
+                    <td ng-hide="restaurant.type != 'club'">{{reservation.tables}}</td>
+                    <td ng-hide="restaurant.type === 'club'">{{reservation.persons}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="reservationDetail({id:reservation.id})"

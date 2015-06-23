@@ -10,7 +10,7 @@
     <!--
         Added the entity Reservation.
     -->
-    <changeSet id="20150611143124" author="jhipster">
+    <changeSet id="20150611143124" author="adrian.dumitru">
         <createTable tableName="T_RESERVATION">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -25,6 +25,7 @@
             <column name="persons"      type="integer"/>
             <column name="comment"      type="varchar(255)"/>
             <column name="user_id"      type="bigint"/>
+            <column name="restaurant_id" type="bigint"/>
             <column name="reservation_tables_id" type="bigint"/>
         </createTable>
 
@@ -33,6 +34,12 @@
                                  constraintName="fk_reservation_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="T_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="restaurant_id"
+                                 baseTableName="T_RESERVATION"
+                                 constraintName="fk_reservation_restaurant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_RESTAURANT"/>
 
         <addForeignKeyConstraint baseColumnNames="reservation_tables_id"
                                  baseTableName="T_RESERVATION"

@@ -61,6 +61,9 @@ public class ProgramResource {
     @Timed
     public List<Program> getAllByRestaurantId(@PathVariable Long restaurant_id) {
         log.debug("REST request to get Program : {}", restaurant_id);
+        System.out.println();
+        System.out.println(programRepository.findAllByRestaurantId(restaurant_id));
+        System.out.println();
         return programRepository.findAllByRestaurantId(restaurant_id);
     }
 

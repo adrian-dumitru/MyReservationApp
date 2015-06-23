@@ -29,7 +29,7 @@
         <!--[if lt IE 10]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
+        <!--<div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>-->
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container" ng-cloak="">
             <div class="well" ui-view="content"></div>
@@ -113,6 +113,7 @@
         <script src="scripts/components/entities/restaurant_tables/restaurant_tables.service.js"></script>
         <script src="scripts/components/entities/reservation/reservation.service.js"></script>
         <script src="scripts/components/entities/reservation/reservationMore.service.js"></script>
+        <script src="scripts/components/entities/comment/comment.service.js"></script>
 
         <script src="scripts/app/account/account.js"></script>
         <script src="scripts/app/account/activate/activate.js"></script>

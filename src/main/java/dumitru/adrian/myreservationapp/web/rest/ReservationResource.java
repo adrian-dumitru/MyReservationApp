@@ -47,10 +47,6 @@ public class ReservationResource {
     @Timed
     public ResponseEntity<Void> create(@Valid @RequestBody Reservation reservation) throws URISyntaxException {
         log.debug("REST request to save Reservation : {}", reservation);
-        if (reservation.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new reservation cannot already have an ID").build();
-        }
-
         try{
             reservationService.checkReservation(reservation);
         }catch (Exception e) {
@@ -71,12 +67,10 @@ public class ReservationResource {
     @Timed
     public ResponseEntity<Void> update(@Valid @RequestBody Reservation reservation) throws URISyntaxException {
         log.debug("REST request to update Reservation : {}", reservation);
-        if (reservation.getId() == null) {
-            return create(reservation);
-        }
-        this.delete(reservation.getId());
-        reservationRepository.save(reservation);
-        return ResponseEntity.ok().build();
+
+        if(reservation.getId() != null)
+            this.delete(reservation.getId());
+        return create(reservation);
     }
 
     /**
@@ -111,9 +105,9 @@ public class ReservationResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Reservation> getAllForCurrentUser(@PathVariable Long id) {
+    public List<Reservation> getAllForCurrentRestaurant(@PathVariable Long id) {
         log.debug("REST request to get Reservation : {}", id);
-        return reservationRepository.findAllByUserId(id);
+        return reservationRepository.findAllByRestaurantId(id);
     }
 
     /**

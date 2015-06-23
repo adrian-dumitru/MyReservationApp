@@ -23,7 +23,10 @@
                 "PAST_RESERVATION_TIME": "You can not chose a date from the past.",
                 "NOT_IN_PROGRAM_PERIOD": "You reservation doesn't match the program.",
                 "NOT_ENOUGH_TABLES": "We are sorry, we do not have enough space for all of you :("
-            }
+            },
+            "two_persons_table": "{{ id }} tables for 2 people",
+            "four_persons_table": "{{ id }} tables for 4 people",
+            "six_persons_table": "{{ id }} tables for 6 people"
         }
     }
 }

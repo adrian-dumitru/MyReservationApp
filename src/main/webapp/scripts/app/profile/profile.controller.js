@@ -169,10 +169,6 @@ angular.module('myreservationappApp')
 
         // Program functions
 
-        //$scope.getTime = function(x){
-        //    return $filter('date')(x,"HH:mm:ss");
-        //};
-
         $scope.createProgram = function(){
             for(var i = 0; i < 7; i++) {
                 $scope.program[i].restaurant = $scope.restaurant;

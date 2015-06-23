@@ -12,5 +12,6 @@
     <include file="classpath:config/liquibase/changelog/20150610150917_added_entity_Reservation_tables.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150611143124_added_entity_Reservation.xml" relativeToChangelogFile="false"/>
 
+    <include file="classpath:config/liquibase/changelog/20150619181237_added_entity_Comment.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

@@ -49,69 +49,261 @@
     </div>
 
 
-    <div>
+    <div ng-if="map.center">
         <ui-gmap-google-map center="map.center" zoom="map.zoom">
             <ui-gmap-marker coords="marker.coords" idKey="marker.id"></ui-gmap-marker>
         </ui-gmap-google-map>
     </div>
+    <br><br>
 
+    <h3 translate="profile.program.title" ng-show="program[0].status">Program</h3>
 
-    <div class="table-responsive" ng-show="program.mondayStart">
-        <h3 translate="profile.program.title">Program</h3>
-
-        <table class="table table-striped" >
+    <div class="table-responsive">
+        <table class="table table-striped" ng-show="program[0].status">
             <thead>
             <tr>
                 <th>Day</th>
                 <th>Start-End</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th><label translate="profile.program.monday">Monday</label></th>
+            <tr ng-repeat="current_day in week">
+                <th><label>{{current_day.day}}</label></th>
                 <th>
-                    <label>{{program.mondayStart === 'CLOSED'? 'CLOSED' : program.mondayStart + ' - ' + program.mondayEnd}}</label>
+                    <label>{{program[current_day.nr].status === 'CLOSED'? 'CLOSED' : program[current_day.nr].start_hour + ' - ' + program[current_day.nr].end_hour}}</label>
                 </th>
             </tr>
-            <tr>
-                <th><label translate="profile.program.tuesday">Tuesday</label></th>
-                <th>
-                    <label>{{program.tuesdayStart === 'CLOSED'? 'CLOSED' : program.tuesdayStart + ' - ' + program.tuesdayEnd}}</label>
-                </th>
-            </tr>
-            <tr>
-                <th><label translate="profile.program.wednesday">Wednesday</label></th>
-                <th>
-                    <label>{{program.wednesdayStart === 'CLOSED'? 'CLOSED' : program.wednesdayStart + ' - ' + program.wednesdayEnd}}</label>
-                </th>
-            </tr>
-            <tr>
-                <th><label translate="profile.program.thursday">Thursday</label></th>
-                <th>
-                    <label>{{program.thursdayStart === 'CLOSED'? 'CLOSED' : program.thursdayStart + ' - ' + program.thursdayEnd}}</label>
-                </th>
-            </tr>
-            <tr>
-                <th><label translate="profile.program.friday">Friday</label></th>
-                <th>
-                    <label>{{program.fridayStart === 'CLOSED'? 'CLOSED' : program.fridayStart + ' - ' + program.fridayEnd}}</label>
-                </th>
-            </tr>
-            <tr>
-                <th><label translate="profile.program.saturday">Saturday</label></th>
-                <th>
-                    <label>{{program.saturdayStart === 'CLOSED'? 'CLOSED' : program.saturdayStart + ' - ' + program.saturdayEnd}}</label>
-                </th>
-            </tr>
-            <tr>
-                <th><label translate="profile.program.sunday">Sunday</label></th>
-                <th>
-                    <label>{{program.sundayStart === 'CLOSED'? 'CLOSED' : (program.sundayStart + ' - ' + program.sundayEnd)}}</label>
-                </th>
-            </tr>
-            </tbody>
         </table>
     </div>
 
+    <h2 translate="myreservationappApp.reservation.home.title">Reservation</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveReservationModal" ng-click="clearReservation()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="myreservationappApp.reservation.home.createLabel">Create a new Reservation</span>
+    </button>
+    <div class="modal fade" id="saveReservationModal" tabindex="-1" role="dialog" aria-labelledby="myReservationLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="createReservation()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clearReservation()">&times;</button>
+                        <h4 class="modal-title" id="myReservationLabel" translate="myreservationappApp.reservation.home.createOrEditLabel">Create or edit a Reservation</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label translate="myreservationappApp.reservation.day">Day</label>
+                            <input type="date" class="form-control" name="day"
+                                   ng-model="day" required>
+
+                            <div ng-show="editForm.day.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.day.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-hide="restaurant.type === 'club'">
+                            <label translate="myreservationappApp.reservation.start_hour">Start_hour</label>
+                            <input type="time" class="form-control" name="start_hour"
+                                   ng-model="start_hour" ng-required="restaurant.type != 'club'">
+
+                            <div ng-show="editForm.day.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.day.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="form-group" ng-hide="restaurant.type === 'club'">
+                            <label translate="myreservationappApp.reservation.end_hour">End_hour</label>
+                            <input type="time" class="form-control" name="end_hour"
+                                   ng-model="end_hour">
+
+                        </div>
+                        <div class="form-group" ng-show="restaurant.type === 'club'">
+                            <label translate="myreservationappApp.reservation.tables">Tables</label>
+                            <input type="number" class="form-control" name="tables"
+                                   ng-model="reservation.tables" min="1" max="100" ng-required="restaurant.type === 'club'">
+
+                            <div ng-show="editForm.tables.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.tables.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.tables.$error.min" translate="entity.validation.min" translate-value-min="1">
+                                    This field should be more than 1.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.tables.$error.max" translate="entity.validation.max" translate-value-max="100">
+                                    This field cannot be more than 100.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.tables.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="myreservationappApp.reservation.comment">Comment</label>
+                            <textarea name="comment" class="form-control" ng-model="reservation.comment" rows="3"></textarea>
+                            <label>{{reservation.comment}}</label>
+
+                        </div>
+                        <div class="form-group" ng-hide="restaurant.type === 'club'">
+                            <label translate="myreservationappApp.reservation.persons">Persons</label>
+                            <input type="number" class="form-control" name="persons"
+                                   ng-model="reservation.persons" ng-required="restaurant.type != 'club'">
+
+                            <div ng-show="editForm.persons.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.persons.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.persons.$error.min" translate="entity.validation.min" translate-value-min="1">
+                                    This field should be more than 1.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.persons.$error.max" translate="entity.validation.max" translate-value-max="100">
+                                    This field cannot be more than 100.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.persons.$error.number" translate="entity.validation.number">
+                                    This field should be a number.
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearReservation()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="errorReservation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">ERROR</h4>
+                </div>
+                <div class="modal-body">
+                    <p translate={{error_message_location}}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 translate="myreservationappApp.comment.home.title">Comment</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCommentModal" ng-click="clearComment()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="myreservationappApp.comment.home.createLabel">Create a new Comment</span>
+    </button>
+    <div class="modal fade" id="saveCommentModal" tabindex="-1" role="dialog" aria-labelledby="myCommentLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editFormComment" role="form" novalidate ng-submit="createComment()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clearComment()">&times;</button>
+                        <h4 class="modal-title" id="myCommentLabel" translate="myreservationappApp.comment.home.createOrEditLabel">Create or edit a Comment</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="myreservationappApp.comment.comment">Comment</label>
+
+                            <textarea rows="4" class="form-control" name="comment"
+                                      ng-model="comment.comment" required ng-minlength="1" ng-maxlength="2000" placeholder="{{'myreservationappApp.comment.comment' | translate}}"></textarea>
+
+                            <!--<input type="text" class="form-control" name="comment"-->
+                                   <!--ng-model="comment.comment" required ng-minlength="1" ng-maxlength="2000">-->
+
+                            <div ng-show="editFormComment.comment.$invalid">
+                                <p class="help-block"
+                                   ng-show="editFormComment.comment.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editFormComment.comment.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                                    This field is required to be at least 1 characters.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editFormComment.comment.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="2000">
+                                    This field cannot be longer than 2000 characters.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearComment()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editFormComment.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteCommentConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDeleteComment(comment.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clearComment()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="myreservationappApp.comment.delete.question">Are you sure you want to delete this Comment?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearComment()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr ng-repeat="comment in comments | orderBy : '-id' : reverse">
+                <td>
+                    <span>{{comment.user.firstName}} {{comment.user.lastName}}:</span>
+                </td>
+                <td>{{comment.comment}}</td>
+                <td ng-show="comment.user.id === user.id">
+                    <button type="submit"
+                            ng-click="deleteComment(comment)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 </div>

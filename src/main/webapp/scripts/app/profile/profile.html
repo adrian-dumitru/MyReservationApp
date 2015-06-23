@@ -5,6 +5,7 @@
     <div>
 
 
+
         <h2 translate="profile.home.title">Profile</h2>
 
         <h3 ng-show="restaurant.id" translate="profile.restaurant.title">Basic Info</h3>
@@ -275,7 +276,7 @@
             </button>
         </div>
 
-        <div ng-show="location.city">
+        <div ng-if="map.center">
             <ui-gmap-google-map center="map.center" zoom="map.zoom">
                 <ui-gmap-marker coords="marker.coords" idKey="marker.id"></ui-gmap-marker>
             </ui-gmap-google-map>
