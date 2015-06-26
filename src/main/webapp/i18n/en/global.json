@@ -15,6 +15,7 @@
                 "reservation_tables": "Reservation_tables",
                 "general_reservation": "General_reservation",
                 "comment": "Comment",
+                "photo": "Photo",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

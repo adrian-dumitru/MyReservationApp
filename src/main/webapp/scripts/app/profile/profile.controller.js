@@ -273,5 +273,4 @@ angular.module('myreservationappApp')
                 $scope.getRestaurant_tables();
         };
 
-
     });

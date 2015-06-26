@@ -16,4 +16,5 @@ public class ReservationUtilTests {
         System.out.println(ReservationUtil.getDayOfWeek(new Date()).toLowerCase());
     }
 
+
 }

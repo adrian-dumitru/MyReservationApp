@@ -5,6 +5,12 @@
             "phone": "Phone",
             "email": "Email",
             "city": "City"
+        },
+        "tabs":{
+            "restaurants": "Restaurants",
+            "pubs": "Pubs",
+            "clubs": "Clubs"
         }
+
     }
 }

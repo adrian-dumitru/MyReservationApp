@@ -9,7 +9,7 @@
             "type": "Type",
             "description": "Description",
             "phone": "Phone",
-            "email": "Email",
+            "email": "E-mail",
             "create_or_edit": "Create or edit your basic info",
             "create_button": "Create your basic info",
             "types": {
@@ -37,7 +37,7 @@
             "friday": "Friday",
             "saturday": "Saturday",
             "sunday": "Sunday",
-            "create_or_edit": "Save or edit your program",
+            "create_or_edit": "Save your program",
             "create_button": "Save your program"
         },
         "restaurant_tables":{

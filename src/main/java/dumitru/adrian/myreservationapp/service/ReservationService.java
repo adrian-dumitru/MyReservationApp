@@ -64,8 +64,6 @@ public class ReservationService {
 
     public void checkReservation(Reservation reservation) throws Exception {
 
-        System.out.println("---------------------------------------------------");
-
         if(reservation.getTables() == null) {
             String day_of_week = ReservationUtil.getDayOfWeek(reservation.getDay());
             User current_user = userRepository.findOneByLogin(reservation.getUser().getLogin()).get();

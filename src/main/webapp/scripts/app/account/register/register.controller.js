@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myreservationappApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth,Facebook) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;

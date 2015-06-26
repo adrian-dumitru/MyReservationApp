@@ -13,8 +13,8 @@
                 "title": "Reservation"
             },
             "day": "Day",
-            "start_hour": "Start_hour",
-            "end_hour": "End_hour",
+            "start_hour": "From",
+            "end_hour": "To",
             "tables": "Tables",
             "persons": "Persons",
             "comment": "Comment",
