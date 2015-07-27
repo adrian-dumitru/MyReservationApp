@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myreservationappApp', ['LocalStorageModule', 'tmh.dynamicLocale',
-    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll','ngMaterial','facebook','ui.select','uiGmapgoogle-maps'])
+    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll','ngMaterial','facebook','ui.select','uiGmapgoogle-maps','flow'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -46,7 +46,12 @@ angular.module('myreservationappApp', ['LocalStorageModule', 'tmh.dynamicLocale'
         };
     })
 
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $translateProvider, tmhDynamicLocaleProvider, httpRequestInterceptorCacheBusterProvider,FacebookProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $translateProvider, tmhDynamicLocaleProvider, httpRequestInterceptorCacheBusterProvider,FacebookProvider, flowFactoryProvider) {
+
+        flowFactoryProvider.defaults = {
+            target: '/upload',
+            permanentErrors:[404, 500, 501]
+        };
 
         // Facebook configuration
         FacebookProvider.init('1584427358505381');

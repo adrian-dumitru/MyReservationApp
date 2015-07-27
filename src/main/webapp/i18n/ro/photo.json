@@ -1,0 +1,20 @@
+{
+    "myreservationappApp": {
+        "photo" : {
+            "home": {
+                "title": "Photos",
+                "createLabel": "Create a new Photo",
+                "createOrEditLabel": "Create or edit a Photo"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "Photo"
+            },
+            "path": "Path",
+            "type": "Type",
+            "restaurant": "restaurant"
+        }
+    }
+}

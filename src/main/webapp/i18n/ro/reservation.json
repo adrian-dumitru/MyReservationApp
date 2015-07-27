@@ -1,0 +1,33 @@
+{
+    "myreservationappApp": {
+        "reservation" : {
+            "home": {
+                "title": "Rezervari",
+                "createLabel": "Creati o noua rezervare",
+                "createOrEditLabel": "Creati sau modificati o rezervare"
+            },
+            "delete": {
+                "question": "Sunteti sigura ca doriti sa stergeti rezervarea cu id-ul {{ id }}?"
+            },
+            "detail": {
+                "title": "Rezervare"
+            },
+            "day": "Ziua",
+            "start_hour": "De la",
+            "end_hour": "La",
+            "tables": "Mese",
+            "persons": "Persoane",
+            "comment": "Comentariu",
+            "User": "User",
+            "errors":{
+                "PAST_RESERVATION_TIME": "Nu puteti alege o data din trecut.",
+                "NOT_IN_PROGRAM_PERIOD": "Rezervarea nu este intre orele de program.",
+                "NOT_ENOUGH_TABLES": "Ne pare rau, nu avem destule locuri disponibile :(",
+                "null":"Ne pare rau, rezervarile nu sunt disponibile momentan ."
+            },
+            "two_persons_table": "{{ id }} mese pentru 2 persoane",
+            "four_persons_table": "{{ id }} mese pentru 4 persoane",
+            "six_persons_table": "{{ id }} mese pentru 6 persoane"
+        }
+    }
+}

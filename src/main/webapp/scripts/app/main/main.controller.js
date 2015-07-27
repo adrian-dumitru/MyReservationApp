@@ -6,7 +6,6 @@ angular.module('myreservationappApp')
         $scope.restaurants_type = 'restaurants';
 
         $scope.changeRestaurantType = function(data){
-            console.log(data);
             $scope.restaurants_type = data;
             $scope.loadAll();
         };

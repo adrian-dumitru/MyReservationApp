@@ -1,11 +1,12 @@
 <div ng-cloak>
     <div class="container">
+        <div>
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active" ng-click = "changeRestaurantType('restaurants')"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" translate="main.tabs.restaurants">Restaurants</a></li>
             <li role="presentation" ng-click = "changeRestaurantType('pubs')"><a href="#home" aria-controls="profile" role="tab" data-toggle="tab" translate="main.tabs.pubs">Pubs</a></li>
             <li role="presentation" ng-click = "changeRestaurantType('clubs')"><a href="#home" aria-controls="messages" role="tab" data-toggle="tab" translate="main.tabs.clubs">Clubs</a></li>
         </ul>
-
+        </div>
         <div class="col-md-8" id = "home">
             <div class="table-responsive" ng-show="isAuthenticated">
                 <table class="table table-striped">
@@ -19,7 +20,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="restaurant in restaurants" ui-sref="restaurant({id:restaurant.user_id})">
-                        <td >{{restaurant.name}}</td>
+                        <td>{{restaurant.name}}</td>
                         <td>{{restaurant.phone}}</td>
                         <td>{{restaurant.email}}</td>
                         <td>{{restaurant.city}}</td>

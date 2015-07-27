@@ -1,29 +1,29 @@
 {
     "settings": {
-        "title": "User settings for [<b>{{username}}</b>]",
+        "title": "Setari pentru [<b>{{username}}</b>]",
         "form": {
-            "firstname": "First Name",
-            "firstname.placeholder": "Your first name",
-            "lastname": "Last Name",
-            "lastname.placeholder": "Your last name",
-            "button": "Save"
+            "firstname": "Prenume",
+            "firstname.placeholder": "Prenume",
+            "lastname": "Nume",
+            "lastname.placeholder": "Nume",
+            "button": "Salveaza"
         },
         "messages": {
             "error": {
-                "fail": "<strong>An error has occurred!</strong> Settings could not be saved.",
-                "emailexists": "<strong>E-mail is already in use!</strong> Please choose another one."
+                "fail": "<strong>A aparut o eroare !</strong> Setarile nu au putut fi salvate.",
+                "emailexists": "<strong>E-mail este deja folosit!</strong> Va rugam alegeti altul."
             },
-            "success": "<strong>Settings saved!</strong>",
+            "success": "<strong>Setarile au fost salvate!</strong>",
             "validate": {
                 "firstname": {
-                    "required": "Your first name is required.",
-                    "minlength": "Your first name is required to be at least 1 character",
-                    "maxlength": "Your first name cannot be longer than 50 characters"
+                    "required": "Prenumele este obligatoriu.",
+                    "minlength": "Prenumele trebuie sa aiba cel putin 1 caracter",
+                    "maxlength": "Prenumele poate avea maxim 50 de caractere"
                 },
                 "lastname": {
-                    "required": "Your last name is required.",
-                    "minlength": "Your last name is required to be at least 1 character",
-                    "maxlength": "Your last name cannot be longer than 50 characters"
+                    "required": "Numele este obligatoriu.",
+                    "minlength": "Numele trebuie sa aiba cel putin 1 caracter",
+                    "maxlength": "Numele poate avea maxim 50 de caractere"
                 }
             }
         }

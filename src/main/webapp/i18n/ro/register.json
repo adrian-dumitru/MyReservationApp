@@ -1,23 +1,35 @@
 {
     "register": {
-        "title": "Registration",
+        "title": "Inregistrare",
         "form": {
-            "button": "Register"
+            "button": "Inregistrare"
         },
         "messages": {
             "validate": {
                 "login": {
-                    "required": "Your login is required.",
-                    "minlength": "Your login is required to be at least 1 character",
-                    "maxlength": "Your login cannot be longer than 50 characters",
-                    "pattern": "Your login can only contain lower-case letters and digits"
+                    "required": "Username-ul este obligatoriu.",
+                    "minlength": "Username-ul trebuie sa aiba cel putin 1 caracter",
+                    "maxlength": "Username-ul poate avea maxim 50 de caractere",
+                    "pattern": "Username-ul contine litere mici si cifre"
+                },
+                "firstname": {
+                    "required": "Prenumele este obligatoriu.",
+                    "minlength": "Prenumele trebuie sa aiba cel putin 1 caracter",
+                    "maxlength": "Prenumele poate avea maxim 50 de caractere",
+                    "pattern": "Prenumele trebuie sa inceapa cu litera mare si sa continue cu litere mici"
+                },
+                "lastname": {
+                    "required": "Numele este obligatoriu.",
+                    "minlength": "Numele trebuie sa aiba cel putin 1 caracter",
+                    "maxlength": "Numele poate avea maxim 50 de caractere",
+                    "pattern": "Prenumele trebuie sa inceapa cu litera mare si sa continue cu litere mici"
                 }
             },
-            "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
+            "success": "<strong>Inregistrare salvata!</strong> Va rugam verificati-va email-ul pentru confirmare.",
             "error": {
-                "fail": "<strong>Registration failed!</strong> Please try again later.",
-                "userexists": "<strong>Login name already registered!</strong> Please choose another one.",
-                "emailexists": "<strong>E-mail is already in use!</strong> Please choose another one."
+                "fail": "<strong>Inregistrare esuata!</strong> Va rugam incercati din nou mai tarziu.",
+                "userexists": "<strong>Acest username este deja folosit!</strong> Va rugam alegeti altul.",
+                "emailexists": "<strong>Acest e-mail este deja folosit!</strong> Va rugam alegeti altul."
             }
         }
     }

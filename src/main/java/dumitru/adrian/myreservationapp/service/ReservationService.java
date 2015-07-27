@@ -68,8 +68,11 @@ public class ReservationService {
             String day_of_week = ReservationUtil.getDayOfWeek(reservation.getDay());
             User current_user = userRepository.findOneByLogin(reservation.getUser().getLogin()).get();
             Long user_id = current_user.getId();
-            Restaurant restaurant = restaurantRepository.findOneByUserId(user_id);
+            Restaurant restaurant = reservation.getRestaurant();
             Long restaurant_id = restaurant.getId();
+//            Restaurant restaurant = restaurantRepository.findOneByUserId(user_id);
+//            Long restaurant_id = restaurant.getId();
+
             Program program = programRepository.findOneByRestaurantIdAndDay(restaurant_id, day_of_week);
 
             Date reservation_start_hour = ReservationUtil.createDate(reservation.getDay(), reservation.getStart_hour());

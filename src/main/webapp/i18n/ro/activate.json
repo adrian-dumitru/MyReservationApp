@@ -1,9 +1,9 @@
 {
     "activate": {
-        "title": "Activation",
+        "title": "Activare",
         "messages": {
-            "success": "<strong>Your user has been activated.</strong> Please <a href=\"#/login\">authenticate</a>.",
-            "error": "<strong>Your user could not be activated.</strong> Please use the registration form to sign up."
+            "success": "<strong>User-ul dumneavoastra a fost activat.</strong> Va rugam sa va <a href=\"#/login\">autentificati</a>.",
+            "error": "<strong>User-ul dumneavoastra nu este activat.</strong> Va rugam sa folositi formularul de inregistrare."
         }
     }
 }

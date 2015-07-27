@@ -1,0 +1,20 @@
+{
+    "myreservationappApp": {
+        "comment" : {
+            "home": {
+                "title": "Comentarii",
+                "createLabel": "Creeaza un comentariu",
+                "createOrEditLabel": "Creeaza sau editeaza un comentariu"
+            },
+            "delete": {
+                "question": "Sunteti sigur ca doriti sa stergeti acest comentariu ?"
+            },
+            "detail": {
+                "title": "Comentariu"
+            },
+            "comment": "Comentariu",
+            "user": "user",
+            "restaurant": "restaurant"
+        }
+    }
+}

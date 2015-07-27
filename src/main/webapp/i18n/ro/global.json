@@ -1,21 +1,32 @@
 {
     "global": {
         "title": "MyReservationApp",
-        "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
+        "browsehappy": "Folositi un browser <strong>invechit</strong>. Va rugam sa va <a href=\"http://browsehappy.com/?locale=en\">updatati browser-ul</a> pentru a avea o experienta unica.",
         "menu": {
-            "home": "Home",
+            "home": "Acasa",
             "entities": {
-                "main": "Entities",
+                "main": "Entitati",
+                "location": "Locatie",
+                "program": "Program",
+                "restaurant": "Restaurant",
+                "restaurant_tables": "Mesele restaurantului",
+                "reservation": "Rezervari",
+                "reservation": "Rezervare",
+                "reservation_tables": "Mese rezervate",
+                "general_reservation": "Rezervare generala",
+                "comment": "Comentariu",
+                "photo": "Imagine",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {
-                "main": "Account",
-                "settings": "Settings",
-                "password": "Password",
-                "sessions": "Sessions",
-                "login": "Authenticate",
+                "profile": "Profil",
+                "main": "Cont",
+                "settings": "Setari",
+                "password": "Parola",
+                "sessions": "Sesiuni",
+                "login": "Autentificare",
                 "logout": "Log out",
-                "register": "Register"
+                "register": "Inregistrare"
             },
             "admin": {
                 "main": "Administration",
@@ -28,73 +39,79 @@
                 "apidocs": "API",
                 "database": "Database"
             },
-            "language": "Language"
+            "language": "Limba"
         },
         "form": {
-            "username": "Login",
-            "username.placeholder": "Your login",
-            "newpassword": "New password",
-            "newpassword.placeholder": "New password",
-            "confirmpassword": "New password confirmation",
-            "confirmpassword.placeholder": "Confirm the new password",
+            "user_type.client":"Client",
+            "user_type.owner":"Proprietar",
+            "username": "Username",
+            "username.placeholder": "Username",
+            "firstname": "Prenume",
+            "firstname.placeholder": "Prenume",
+            "lastname": "Nume",
+            "lastname.placeholder": "Nume",
+            "newpassword": "Parola noua",
+            "newpassword.placeholder": "Parola noua",
+            "confirmpassword": "Confirmati parola",
+            "confirmpassword.placeholder": "Confirmati parola",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "E-mail"
         },
         "messages": {
             "info": {
                 "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
-                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+                "register": "Nu aveti inca un cont ? <a href=\"#/register\">Inregistrati-va aici</a>"
             },
             "error": {
-                "dontmatch" : "The password and its confirmation do not match!"
+                "dontmatch" : "Parola si confirmarea parolei nu se potrivesc !"
             },
             "validate": {
                 "newpassword": {
-                    "required": "Your password is required.",
-                    "minlength": "Your password is required to be at least 5 characters.",
-                    "maxlength": "Your password cannot be longer than 50 characters.",
-                    "strength": "Password strength:"
+                    "required": "Parola este obligatorie.",
+                    "minlength": "Parola este obligatorie si trebuie sa aiba cel putin 5 caractere.",
+                    "maxlength": "Parola nu poate fi mai lunga de 50 caractere.",
+                    "strength": "Parola:"
                 },
                 "confirmpassword": {
-                    "required": "Your confirmation password is required.",
-                    "minlength": "Your confirmation password is required to be at least 5 characters.",
-                    "maxlength": "Your confirmation password cannot be longer than 50 characters."
+                    "required": "Confirmarea parolei este obligatorie.",
+                    "minlength": "Confirmarea parolei trebuie sa aiba cel putin 5 caractere.",
+                    "maxlength": "Confirmarea parolei nu poate fi mai lunga de 50 caractere."
                 },
                 "email": {
-                    "required": "Your e-mail is required.",
-                    "invalid": "Your e-mail is invalid.",
-                    "minlength": "Your e-mail is required to be at least 5 characters.",
-                    "maxlength": "Your e-mail cannot be longer than 50 characters."
+                    "required": "E-mail-ul este obligatoriu.",
+                    "invalid": "E-mail-ul este invalid.",
+                    "minlength": "E-mail-ul trebuie sa aiba cel putin 5 caractere.",
+                    "maxlength": "E-mail-ul nu poate avea mai mult de 50 de caractere."
                 }
             }
         }
     },
     "entity": {
         "action": {
-            "back": "Back",
-            "cancel": "Cancel",
-            "delete": "Delete",
-            "edit": "Edit",
-            "save": "Save",
-            "view": "View"
+            "back": "Inapoi",
+            "cancel": "Renunta",
+            "delete": "Sterge",
+            "edit": "Editeaza",
+            "save": "Salveaza",
+            "view": "Vizualizeaza"
         },
         "detail": {
-            "field": "Field",
-            "value": "Value"
+            "field": "Camp",
+            "value": "Valuare"
         },
         "delete": {
-            "title": "Confirm delete operation"
+            "title": "Confirmati stergerea"
         },
         "validation": {
-            "required": "This field is required.",
-            "minlength": "This field is required to be at least {{min}} characters.",
-            "maxlength": "This field cannot be longer than {{max}} characters.",
-            "min": "This field should be more than {{min}}.",
-            "max": "This field cannot be more than {{max}}.",
-            "pattern": "This field should follow pattern {{pattern}}.",
-            "number": "This field should be a number.",
-            "datetimelocal": "This field should be a date and time."
+            "required": "Acest camp este obligatoriu.",
+            "minlength": "Acest camp trebuie sa aiba cel putin {{min}} caractere.",
+            "maxlength": "Acest camp poate aveacel mult {{max}} caractere.",
+            "min": "Acest camp nu poate fi mai mic decat {{min}}.",
+            "max": "Acest camp nu poate fi mai mare decat {{max}}.",
+            "pattern": "Acest camp ar trebui sa respeste urmatorul pattern {{pattern}}.",
+            "number": "Acest camp ar trebui sa fie un numar.",
+            "datetimelocal": "Acest camp ar trebui sa fie de tip data."
         }
     },
-    "footer": "This is your footer"
+    "footer": "Acesta este footer-ul dumneavoastra"
 }

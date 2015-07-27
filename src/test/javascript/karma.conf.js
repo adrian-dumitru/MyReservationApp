@@ -35,6 +35,8 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-ui-select/dist/select.js',
             'main/webapp/bower_components/lodash/dist/lodash.compat.js',
             'main/webapp/bower_components/angular-google-maps/dist/angular-google-maps.js',
+            'main/webapp/bower_components/flow.js/dist/flow.js',
+            'main/webapp/bower_components/ng-flow/dist/ng-flow.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

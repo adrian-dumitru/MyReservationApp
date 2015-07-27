@@ -1,0 +1,65 @@
+{
+    "profile": {
+        "home": {
+            "title": "Profil"
+        },
+        "restaurant": {
+            "title": "Informatii de baza",
+            "name": "Nume",
+            "type": "Tip",
+            "description": "Descriere",
+            "phone": "Telefon",
+            "email": "E-mail",
+            "create_or_edit": "Creati si editati informatiile de baza",
+            "create_button": "Creati informatiile de baza",
+            "types": {
+                "restaurant": "Restaurant",
+                "pub": "Bar",
+                "club": "Club"
+            }
+        },
+        "location":{
+            "title": "Locatie",
+            "city": "Oras",
+            "street": "Strada",
+            "number": "Numar",
+            "latitude": "Latitudine",
+            "longitude": "Longitudine",
+            "create_or_edit": "Salveaza sau editeaza locatia",
+            "create_button": "Salveaza locatia"
+        },
+        "program":{
+            "title": "Program",
+            "monday": "Luni",
+            "tuesday": "Marti",
+            "wednesday": "Miercuri",
+            "thursday": "Joi",
+            "friday": "Vineri",
+            "saturday": "Sambata",
+            "sunday": "Duminica",
+            "create_or_edit": "Salveaza programul",
+            "create_button": "Salveaza programul"
+        },
+        "restaurant_tables":{
+            "title": "Mesele resturantului",
+            "two_persons_table": "Mese de 2 persoane",
+            "four_persons_table": "Mese de 4 persoane",
+            "six_persons_table": "Mese de 4 persoane",
+            "create_or_edit": "Salvati sau modificati mesele restaurantului",
+            "create_button": "Salvati mesele restaurantului"
+        },
+        "error_messages":{
+            "required": "Acest camp este obligatoriu.",
+            "minimum_length_2": "Lungimea minima este 2 caractere.",
+            "maximum_length_30": "Lungimea maxima este de 30 caractere.",
+            "maximum_length_1000": "Lungimea maxima este de 1000 caractere.",
+            "phone": "Numarul de telefon trebuie sa aiba 10 cifre."
+        },
+        "delete": {
+            "question": "Sunteti sigur ca doriti sa stergeti locatia u id-ul {{ id }}?"
+        },
+        "detail": {
+            "title": "Locatie"
+        }
+    }
+}
